@@ -1,0 +1,1 @@
+H:\libray\mongodb\bin\mongod.exe -dbpath H:\libray\mongodb\library
