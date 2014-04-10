@@ -1,8 +1,10 @@
+/**
+ *首页
+ **/
 
-/*
- * GET home page.
- */
+module.exports = function (app) {
 
-exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+    app.get('/', function (req, res) {
+        res.send('这是首页');
+    });
 };
