@@ -1,0 +1,1 @@
+mongod --dbpath /Users/linx4200/Documents/MYFILE/Library/mongodb/library
