@@ -5,14 +5,16 @@
 var crypto = require('crypto'),
     User = require('../models/user.js');
 
-module.exports = function (app) {
+module.exports = function (app, checkNotLogin) {
 
+    app.get('/signup', checkNotLogin);
     app.get('/signup', function (req, res) {
         res.render('signup', {
             error: req.flash('error').toString()
         });
     });
 
+    app.get('/signup', checkNotLogin);
     app.post('/signup', function (req, res) {
         var password = req.body.password,
             password_re = req.body['password-repeat'];

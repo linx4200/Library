@@ -4718,6 +4718,11 @@ table {
 .cf:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 .cf{*+height:1%;}
 
+/***** GLOBAL *****/
+.a-w {
+    color: #fff;  /*白色链接*/
+}
+
 /*垂直居中 和 水平居中*/
 .center {
     position: absolute;
@@ -4744,4 +4749,27 @@ table {
     height: 20px;
     line-height: 20px;
     vertical-align: top;
+}
+
+/***** 顶部兰 *****/
+.topbar {
+    height: 60px;
+    background: #34495e;
+    line-height: 60px;
+}
+.topbar .user {
+    float: right;
+    margin-right: 15px;
+}
+.topbar .userNo {
+    color: #fff;
+}
+.topbar .returnBtn {
+    width:95px;
+    height:30px;
+    line-height: 30px;
+    padding: 0;
+    margin:0 15px;
+    display: inline-block;
+    text-align: center;
 }

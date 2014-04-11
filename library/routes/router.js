@@ -6,6 +6,7 @@
 
 var index = require('./index'),
     login = require('./login'),
+    logout = require('./logout'),
     signup = require('./signup'),
     searchRes = require('./searchRes'),
     list = require('./list'),
@@ -17,11 +18,32 @@ var index = require('./index'),
     favi = require('./favi'),
     info = require('./info');
 
+// function checkLogin(req, res) {
+//     console.log('\n ===============  checkLogin  ============== \n');
+//     if (!req.session.user) {
+//         req.flash('error', '未登录!');
+//         res.redirect('/login');
+//     }
+// }
+
+function checkNotLogin(req, res, next) {
+    if (req.session.user) {
+        req.flash('error', '已登录!');
+        res.redirect('back');//返回之前的页面
+    }
+    next();
+}
+
 module.exports = function (app) {
 
+    login(app, checkNotLogin);
+    signup(app, checkNotLogin);
+
+    //以下页面需要登录
+    // app.use(checkLogin);
+
     index(app);
-    login(app);
-    signup(app);
+    logout(app);
     searchRes(app);
     list(app);
     detail(app);
@@ -35,20 +57,4 @@ module.exports = function (app) {
     app.use(function (req, res) {
         res.render('404');
     });
-
-  // function checkLogin(req, res, next) {
-  //   if (!req.session.user) {
-  //     req.flash('error', '未登录!'); 
-  //     res.redirect('/login');
-  //   }
-  //   next();
-  // }
-
-  // function checkNotLogin(req, res, next) {
-  //   if (req.session.user) {
-  //     req.flash('error', '已登录!'); 
-  //     res.redirect('back');//返回之前的页面
-  //   }
-  //   next();
-  // }
 };
