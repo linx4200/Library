@@ -6,11 +6,37 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         clean: {
-            build: {
+            seajs: {
                 src: [
-                    'public/dist/*'
+                    'public/.build'
                 ]
             }
+        },
+        transport : {
+            options: {
+                path: ['public/js'],
+                // format: 'app/dist/',
+                debug : false
+            },
+            app: {
+                files: [
+                    {
+                        expand : true,
+                        cwd: 'public/js/',
+                        src: [
+                            '**/*.js',
+                            '!lib/*.js',
+                            '!seajs/*.js',
+                        ],
+                        dest: 'public/.build'
+                    }
+                ]
+            }
+            // app: {
+            //     files: {
+            //         'public/dist/.build': ['public/js/components/*.js', 'public/js/page/*.js']
+            //     }
+            // }
         },
         concat: {
             options: {
@@ -20,9 +46,19 @@ module.exports = function (grunt) {
             },
             css: {
                 src: [
-                    'public/css/*.css'
+                    'public/css/reset.css',
+                    'public/css/flat-ui.css',
+                    'public/css/style.css'
                 ],
                 dest: 'public/dist/style.css'
+            },
+            js: {
+                src: [
+                    'public/js/seajs/*.js',
+                    'public/.build/**/*.js'
+                    
+                ],
+                dest: 'public/dist/js/app.js'
             }
         },
         express: {
@@ -36,8 +72,13 @@ module.exports = function (grunt) {
             css: {
                 files: ['public/css/*.css'],
                 tasks: [
-                    'clean',
-                    'concat'
+                    'concat:css'
+                ]
+            },
+            js: {
+                files: ['public/js/*.js'],
+                tasks: [
+                    'seajs'
                 ]
             },
             web: {
@@ -67,6 +108,9 @@ module.exports = function (grunt) {
                     args: ['watch:css']
                 }, {
                     grunt: true,
+                    args: ['watch:js']
+                }, {
+                    grunt: true,
                     args: ['watch:web']
                 }]
             }
@@ -75,10 +119,10 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    // grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-parallel');
+    grunt.loadNpmTasks('grunt-cmd-transport');
 
     grunt.registerTask('web', 'launch webserver and watch tasks', [
         // 'start',
@@ -89,4 +133,6 @@ module.exports = function (grunt) {
     // grunt.registerTask('default', ['connect', 'watch']);
     // grunt.registerTask('default', ['watch']);
     grunt.registerTask('default', ['web']);
+    // grunt.registerTask('seajs', ['transport', 'concat:js', 'clean:seajs']);
+    grunt.registerTask('seajs', ['clean:seajs', 'transport', 'concat:js']);
 };

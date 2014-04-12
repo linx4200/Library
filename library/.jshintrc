@@ -15,6 +15,7 @@
     "node" : true,
     "es5" : false,
     "browser" : true,
+    "jquery" : true,
 
     "boss" : false,
     "curly": false,
@@ -30,12 +31,14 @@
     "noempty": false,
     "nonew": false,
     "nomen": false,
-    "onevar": true,
+    "onevar": false,
     "plusplus": false,
     "regexp": false,
     "undef": true,
     "sub": true,
     "strict": false,
     "white": true,
-    "unused": true
+    "unused": true,
+
+    "predef" : ["define"]
 }

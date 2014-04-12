@@ -16,7 +16,8 @@ var index = require('./index'),
     type = require('./type'),
     comment = require('./comment'),
     favi = require('./favi'),
-    info = require('./info');
+    info = require('./info'),
+    add = require('./add');
 
 // function checkLogin(req, res) {
 //     console.log('\n ===============  checkLogin  ============== \n');
@@ -53,6 +54,7 @@ module.exports = function (app) {
     comment(app);
     favi(app);
     info(app);
+    add(app);
 
     app.use(function (req, res) {
         res.render('404');

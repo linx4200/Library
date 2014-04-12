@@ -1,19 +1,15 @@
-<%- include head %> 
-<body>
+<%- include head %>
     <% if(user.identity === 'student') { %>
 
-        <header class="topbar cf">
-            <div class="user">
-                <a class="a-w userNo"><%= user.no %></a>
-                <a class="returnBtn btn btn-block btn-primary">我要还书</a>
-                <a href="/logout" class="a-w">登出</a>
-            </div>
-        </header>
+        <%- include topbar-student %>
 
         <%- include index-student %>
 
     <% } else if(user.identity === 'admin') { %>
+        
+        <%- include topbar-admin %>
+        
         <%- include index-admin %>
+        
     <% } %>
-</body>
-</html>
+<%- include foot %>
