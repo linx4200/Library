@@ -56,7 +56,7 @@ module.exports = function (app) {
     info(app);
     add(app);
 
-    app.use(function (req, res) {
-        res.render('404');
-    });
+    // app.use(function (req, res) {
+    //     res.render('404');
+    // });
 };

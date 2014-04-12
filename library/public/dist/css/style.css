@@ -4722,6 +4722,12 @@ footer p {
 .a-w {
     color: #fff;  /*白色链接*/
 }
+.title-back {  /*标题返回链接*/
+    font-size: 16px;
+    display: inline-block;
+    margin-left: 15px;
+    color: #BDC3C7;
+}
 
 /*垂直居中 和 水平居中*/
 .center {
@@ -4751,7 +4757,7 @@ footer p {
     vertical-align: top;
 }
 
-/***** 顶部兰 *****/
+/***** 顶部栏 *****/
 .topbar {
     height: 60px;
     background: #34495e;
@@ -4774,4 +4780,29 @@ footer p {
     text-align: center;
 }
 
-/***** 表格 *****/
+/***** 添加图书表单 *****/
+.addBook, .addBook-title {
+    width: 500px;
+    margin:30px auto;
+}
+
+.addBook label{
+    width: 80px;
+    display: inline-block;
+}
+
+.addBook input[type="text"]{
+    width:250px;
+}
+
+.addBook textarea{
+    width: 400px;
+    height: 200px;
+    resize:none;
+    vertical-align: top;
+}
+
+.addBook .submitBtn, .addBook .cancelBtn {
+    width: 100px;
+    margin-right: 30px;
+}

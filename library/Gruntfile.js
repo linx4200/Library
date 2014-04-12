@@ -50,7 +50,7 @@ module.exports = function (grunt) {
                     'public/css/flat-ui.css',
                     'public/css/style.css'
                 ],
-                dest: 'public/dist/style.css'
+                dest: 'public/dist/css/style.css'
             },
             js: {
                 src: [
@@ -76,7 +76,7 @@ module.exports = function (grunt) {
                 ]
             },
             js: {
-                files: ['public/js/*.js'],
+                files: ['public/js/**/*'],
                 tasks: [
                     'seajs'
                 ]
@@ -133,6 +133,5 @@ module.exports = function (grunt) {
     // grunt.registerTask('default', ['connect', 'watch']);
     // grunt.registerTask('default', ['watch']);
     grunt.registerTask('default', ['web']);
-    // grunt.registerTask('seajs', ['transport', 'concat:js', 'clean:seajs']);
-    grunt.registerTask('seajs', ['clean:seajs', 'transport', 'concat:js']);
+    grunt.registerTask('seajs', ['clean:seajs', 'transport', 'concat:js', 'clean:seajs']);
 };
