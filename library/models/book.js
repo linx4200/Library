@@ -88,8 +88,8 @@ Book.get = function (callback) {
     });
 };
 
-//根据图书名字查找图书
-Book.getOneByName = function (name, callback) {
+//根据传入的条件(query)来查找图书
+Book.query = function (query, callback) {
     //打开数据库
     mongodb.open(function (err, db) {
         if (err) {
@@ -102,9 +102,8 @@ Book.getOneByName = function (name, callback) {
                 mongodb.close();
                 return callback(err);
             }
-            var query = {};
-            if (name) {
-                query.name = name;
+            if (!query) {
+                query = {};
             }
             //根据 query 对象查询图书
             collection.find(query).sort({

@@ -1,0 +1,23 @@
+<%- include head %>
+    <%- include topbar-student %>
+    <div class="bookListWrap blockWrap">
+        <ol class="breadcrumb">
+            <li><a href="/">图书</a></li>
+            <% if ( type) { %>
+                <li><a href="/list?type=<%= type %>"><%= type %></a></li>
+            <% } %>
+            <% if ( subType) { %>
+                <li class="active"><%= subType %></li>
+            <% } %>
+        </ol>
+        <% if (books.length ===0) { %>
+            <div class="notFound">
+                很抱歉,该分类下没有图书...
+            </div>
+        <% } else { %>
+            <div class="bookList">
+                <%- include bookItem %>
+            </div>
+        <% } %>
+    </div>
+<%- include foot %>

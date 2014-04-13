@@ -12,6 +12,9 @@
     margin-left: 15px;
     color: #BDC3C7;
 }
+.blockWrap { /*块级大容器*/
+    padding: 30px;
+}
 
 /*垂直居中 和 水平居中*/
 .center {
@@ -79,6 +82,9 @@
 .bookMenu li {
     position: relative;
 }
+.bookMenu .dropdown-arrow{
+    left: 18px;
+}
 .bookSubMenuWrap {
     position: absolute;
     top: -5px;
@@ -105,6 +111,14 @@
     padding: 5px !important;
 }
 
+/***** 首页样式 *****/
+.indexSwrap {
+    width: 600px;
+    margin: 50px auto;
+}
+
+/***** 图书列表样式 *****/
+
 /***** 添加图书表单 *****/
 .addBook, .addBook-title {
     width: 500px;
@@ -117,7 +131,7 @@
 }
 
 .addBook input[type="text"]{
-    width:250px;
+    width:300px;
 }
 
 .addBook textarea{
@@ -128,6 +142,8 @@
 }
 
 .addBook .submitBtn, .addBook .cancelBtn {
-    width: 100px;
-    margin-right: 30px;
+    width: 100px !important;
+    margin: 0;
+    margin-right: 20px;
+    display: inline-block;
 }
