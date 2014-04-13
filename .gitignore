@@ -4,6 +4,7 @@
 node_modules
 
 .sublime-project
+.sublime-workspace
 
 # 忽略数据库
 mongodb

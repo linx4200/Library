@@ -3231,7 +3231,7 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
   transition: 0.25s;
 }
 .open > .dropdown-menu {
-  margin-top: 18px !important;
+  margin-top: 10px !important;
   opacity: 1;
   visibility: visible;
 }
@@ -3345,7 +3345,7 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
   border-top-color: #34495e;
 }
 .open > .dropdown-arrow {
-  margin-top: 11px;
+  margin-top: 5px;
   opacity: 1;
 }
 .dropdown-arrow {

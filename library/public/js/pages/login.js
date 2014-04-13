@@ -1,4 +1,4 @@
- /* 添加书本表格JS
+ /* 登陆框JS
   * ============================== */
 
 define(function (require, exports, module) {

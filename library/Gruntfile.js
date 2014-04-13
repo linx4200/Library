@@ -47,6 +47,7 @@ module.exports = function (grunt) {
             css: {
                 src: [
                     'public/css/reset.css',
+                    'public/css/bootstrap.css',
                     'public/css/flat-ui.css',
                     'public/css/style.css'
                 ],
