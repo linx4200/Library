@@ -8,7 +8,7 @@ var index = require('./index'),
     login = require('./login'),
     logout = require('./logout'),
     signup = require('./signup'),
-    searchRes = require('./searchRes'),
+    search = require('./search'),
     list = require('./list'),
     detail = require('./detail'),
     me = require('./me'),
@@ -45,7 +45,7 @@ module.exports = function (app) {
 
     index(app);
     logout(app);
-    searchRes(app);
+    search(app);
     list(app);
     detail(app);
     me(app);

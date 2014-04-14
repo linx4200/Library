@@ -19,17 +19,32 @@ module.exports = function (app) {
         if (subType) {
             query.subType = subType;
         }
-        if (sort) {
-            query.sort = sort;
+        if (!sort) {
+            sort = {};
+        }
+        if (sort === 'time') {
+            sort = {
+                'time' : -1
+            };
+        }
+        if (sort === 'comment') {
+            sort = {
+                'comment' : -1
+            };
         }
 
-        Book.query(query, function (err, books) {
+        Book.query(query, sort, function (err, books) {
             if (err) {
                 return res.render('booklist', {
                     user: req.session.user,
                     books: []
                 });
             }
+            //转换出版时间格式
+            for (var i = 0, l = books.length; i < l; i++) {
+                books[i].time = (new Date(Number(books[i].time))).toJSON().substring(0, 10);
+            }
+
             res.render('booklist', {
                 user: req.session.user,
                 books : books,
@@ -37,8 +52,5 @@ module.exports = function (app) {
                 subType : subType,
             });
         });
-
-
-        
     });
 };

@@ -1,4 +1,4 @@
-/*! library - v0.0.1 - 2014-04-13 */
+/*! library - v0.0.1 - 2014-04-14 */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -4163,7 +4163,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .breadcrumb {
   padding: 8px 15px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   list-style: none;
   background-color: #f5f5f5;
   border-radius: 4px;
@@ -10554,6 +10554,9 @@ footer p {
 .a-w {
     color: #fff;  /*白色链接*/
 }
+.a-b {
+    color: #34495e;  /*原色链接*/
+}
 .title-back {  /*标题返回链接*/
     font-size: 16px;
     display: inline-block;
@@ -10562,6 +10565,17 @@ footer p {
 }
 .blockWrap { /*块级大容器*/
     padding: 30px;
+}
+.hr {  /* 红色 */
+    color: #e74c3c;
+}
+.clip { /* 截断文字 */
+    overflow:hidden; /*不显示超过对象宽度的内容*/  
+    text-overflow:ellipsis; /*当对象内文本溢出时显示省略标记（...）*/  
+    white-space:nowrap; /*限制在一行内显示所有文本*/  
+}
+.mb30 {
+    margin-bottom: 30px;
 }
 
 /*垂直居中 和 水平居中*/
@@ -10666,6 +10680,86 @@ footer p {
 }
 
 /***** 图书列表样式 *****/
+.filter {
+    margin-bottom: 15px;
+}
+.sortWrap span {
+    display: inline-block;
+    margin-right: 15px;
+    padding:0 10px;
+}
+.sortWrap .checkbox {
+    display: inline-block;
+}
+.sortWrap a {
+    color : #34495e;
+}
+.sortWrap .title {
+    font-weight: bold;
+}
+.sortWrap .active{
+    background: #1abc9c;
+    border-radius: 5px;
+}
+.sortWrap .active a{
+    color: #fff;
+}
+.bookItem {
+    margin-bottom: 30px;
+}
+.coverWrap {
+    float: left;
+    width: 25%;
+}
+.coverWrap img {
+    width: 100%;
+}
+.infoWrap {
+    float: left;
+    width: 75%;
+    padding-left: 30px;
+}
+.infoWrap .name a {
+    color : #34495e;
+}
+.infoWrap p {
+    font-size: 16px;
+    margin: 0 0 5px;
+}
+.infoWrap .btn {
+    display: inline-block;
+    margin-right: 15px;
+    margin-top: 10px;
+}
+.infoWrap .lendBtn {
+    width: 150px;
+}
+.infoWrap .favoBtn {
+    width: 50px;
+}
+.favoBtn .fui-heart {
+    color: white;
+}
+
+/***** 图书详细页 *****/
+.toggleTitle {
+    width:100%;
+    background: #ecf0f1;
+    margin-bottom: 30px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+.toggleTitle .title {
+    width: 50%;
+    float: left;
+}
+.toggleTitle .active {
+    background: #bdc3c7;
+}
+.info-p {
+    text-indent: 2em;
+}
 
 /***** 添加图书表单 *****/
 .addBook, .addBook-title {

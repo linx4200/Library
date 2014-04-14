@@ -1,6 +1,6 @@
 var mongodb = require('./db');
 
-function Book(name, author, publisher, time, isbn, type, subType, haveNum, cover, summary, list, intro) {
+function Book(name, author, publisher, time, isbn, type, subType, haveNum, available, cover, summary, list, intro) {
     this.name = name;
     this.author = author;
     this.publisher = publisher;
@@ -9,6 +9,7 @@ function Book(name, author, publisher, time, isbn, type, subType, haveNum, cover
     this.type = type;
     this.subType = subType;
     this.haveNum = haveNum;
+    this.available = available;
     this.cover = cover;
     this.summary = summary;
     this.list = list;
@@ -89,7 +90,7 @@ Book.get = function (callback) {
 };
 
 //根据传入的条件(query)来查找图书
-Book.query = function (query, callback) {
+Book.query = function (query, sort, callback) {
     //打开数据库
     mongodb.open(function (err, db) {
         if (err) {
@@ -102,18 +103,41 @@ Book.query = function (query, callback) {
                 mongodb.close();
                 return callback(err);
             }
-            if (!query) {
-                query = {};
-            }
-            //根据 query 对象查询图书
-            collection.find(query).sort({
-                time: -1
-            }).toArray(function (err, docs) {
+            //根据 query 对象查询图书, 根据sort对象进行排序
+            collection.find(query).sort(sort).toArray(function (err, docs) {
                 mongodb.close();
                 if (err) {
                     return callback(err);//失败！返回 err
                 }
                 callback(null, docs);//成功！以数组形式返回查询的结果
+            });
+        });
+    });
+};
+
+
+//搜索功能
+Book.search = function (keyword, callback) {
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);
+        }
+        db.collection('books', function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);
+            }
+            var pattern = new RegExp('^.*' + keyword + '.*$', 'i');
+            collection.find({
+                name: pattern
+            }).sort({
+                time: -1
+            }).toArray(function (err, docs) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);
+                }
+                callback(null, docs);
             });
         });
     });

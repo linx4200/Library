@@ -3,13 +3,34 @@
     <div class="bookListWrap blockWrap">
         <ol class="breadcrumb">
             <li><a href="/">图书</a></li>
-            <% if ( type) { %>
+            <% if ( type && subType ) { %>
                 <li><a href="/list?type=<%= type %>"><%= type %></a></li>
+            <% } else if (type && !subType) { %>
+                <li><%= type %></li>
             <% } %>
-            <% if ( subType) { %>
+            <% if ( subType ) { %>
                 <li class="active"><%= subType %></li>
             <% } %>
         </ol>
+        <div class="filter">
+            <div class="sortWrap">
+                <span class="title">排序:</span>
+                <% if ( type && !subType) { %>
+                    <span id="sort-default" class="sort"><a href="/list?type=<%= type %>">默认</a></span>
+                    <span id="sort-time" class="sort"><a href="/list?type=<%= type %>&sort=time">出版时间</a></span>
+                    <span id="sort-recommand" class="sort"><a href="/list?type=<%= type %>&sort=recommand">评分</a></span>
+                <% } %>
+                <% if ( subType ) { %>
+                    <span id="sort-default" class="sort"><a href="/list?type=<%= type %>&subtype=<%= subType %>">默认</a></span>
+                    <span id="sort-time" class="sort"><a href="/list?type=<%= type %>&subtype=<%= subType %>&sort=time">出版时间</a></span>
+                    <span id="sort-recommand" class="sort"><a href="/list?type=<%= type %>&subtype=<%= subType %>&sort=recommand">评分</a></span>
+                <% } %>
+                
+                <label class="checkbox" for="lendable">
+                    <span class="icons"><span class="first-icon fui-checkbox-unchecked"></span><span class="second-icon fui-checkbox-checked"></span></span><input type="checkbox" value="" id="lendable" data-toggle="checkbox">仅显示可借图书
+                </label>
+            </div>
+        </div>
         <% if (books.length ===0) { %>
             <div class="notFound">
                 很抱歉,该分类下没有图书...
