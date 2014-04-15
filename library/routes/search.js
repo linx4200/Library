@@ -7,7 +7,10 @@ var Book = require('../models/book');
 module.exports = function (app) {
 
     app.get('/search', function (req, res) {
-        Book.search(req.query.keyword, function (err, books) {
+        var keyword = req.query.keyword,
+            by = req.query.by || 'book';  //默认按书名搜索
+
+        Book.search(keyword, by, function (err, books) {
             if (err) {
                 req.flash('error', err);
                 return res.redirect('/');

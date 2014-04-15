@@ -117,7 +117,7 @@ Book.query = function (query, sort, callback) {
 
 
 //搜索功能
-Book.search = function (keyword, callback) {
+Book.search = function (keyword, by, callback) {
     mongodb.open(function (err, db) {
         if (err) {
             return callback(err);
@@ -127,10 +127,21 @@ Book.search = function (keyword, callback) {
                 mongodb.close();
                 return callback(err);
             }
-            var pattern = new RegExp('^.*' + keyword + '.*$', 'i');
-            collection.find({
-                name: pattern
-            }).sort({
+            var pattern = new RegExp('^.*' + keyword + '.*$', 'i'),
+                query;
+
+            //搜索条件
+            if (by === 'book') {
+                query = {
+                    name: pattern
+                };
+            } else if (by === 'author') {
+                query = {
+                    author: pattern
+                };
+            }
+
+            collection.find(query).sort({
                 time: -1
             }).toArray(function (err, docs) {
                 mongodb.close();

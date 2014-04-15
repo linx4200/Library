@@ -10768,6 +10768,11 @@ footer p {
 .searchWrap .select .btn {
     width:100px;
     font-size: 16px;
+    height: 35px;
+    padding: 0;
+}
+.searchWrap .select .btn.btn-hg .filter-option {
+    top: 9px !important;
 }
 .searchWrap .dropdown-menu {
     min-height: 0 !important;
