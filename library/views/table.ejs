@@ -1,17 +1,20 @@
 <%- include head %>
     <%- include partials/topbar-admin %>
-    <h4 class="">查看图书</h4>
-    <table>
-        <thead>
-            
-        </thead>
+    <div class="blockWrap">
+        <h4 class="">查看图书</h4>
+        <table>
+            <thead>
+                
+            </thead>
 
-        <tbody>
-            <% for(var i = 0, l = books.length; i < l; i++) { %>
-                <tr>
-                    <td><%= books[i].name %></td>
-                </tr> 
-            <% } %>
-        </tbody>
-    </table>
+            <tbody>
+                <% for(var i = 0, l = books.length; i < l; i++) { %>
+                    <tr>
+                        <td><%= books[i].name %></td>
+                    </tr> 
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+    <% include partials/footer %>
 <%- include foot %>

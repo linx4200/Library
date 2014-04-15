@@ -9,6 +9,14 @@ define(function (require, exports, module) {
 
     app.init = function () {
         $(document).ready(function () {
+
+            //GLOBAL
+            $('body').css({
+                'min-height': window.innerHeight
+            });
+
+
+            //pages
             add.init();
             login.init();
             index.init();

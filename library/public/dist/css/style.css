@@ -10551,6 +10551,9 @@ footer p {
 .cf{*+height:1%;}
 
 /***** GLOBAL *****/
+body {
+    position: relative;
+}
 .a-w {
     color: #fff;  /*白色链接*/
 }
@@ -10565,6 +10568,7 @@ footer p {
 }
 .blockWrap { /*块级大容器*/
     padding: 30px;
+    padding-bottom: 50px;  /* 为footer预留位置 */
 }
 .hr {  /* 红色 */
     color: #e74c3c;
@@ -10611,6 +10615,14 @@ footer p {
     height: 50px;
     background: #34495e;
     line-height: 50px;
+}
+.topbar .logo {
+    float: left;
+    width:30px;
+    margin-left: 30px;
+}
+.topbar .logo img {
+    width: 100%;
 }
 .topbar .user {
     float: right;
@@ -10673,10 +10685,27 @@ footer p {
     padding: 5px !important;
 }
 
+/***** FOOTER *****/
+.footer {
+    height: 50px;
+    background: #34495e;
+    line-height: 50px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.footer .copyright {
+    font-size: 12px;
+    float: right;
+    color: #95A5A6;
+    margin-top: 15px;
+    margin-right: 30px;
+}
+
 /***** 首页样式 *****/
 .indexSwrap {
     width: 600px;
-    margin: 50px auto;
+    margin: 0 auto;
 }
 
 /***** 图书列表样式 *****/
@@ -10781,7 +10810,7 @@ footer p {
 /***** 添加图书表单 *****/
 .addBook, .addBook-title {
     width: 500px;
-    margin:30px auto;
+    margin:0 auto 30px;
 }
 
 .addBook label{
