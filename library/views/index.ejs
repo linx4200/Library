@@ -1,13 +1,13 @@
 <%- include head %>
     <% if(user.identity === 'student') { %>
 
-        <%- include topbar-student %>
+        <%- include partials/topbar-student %>
 
         <%- include index-student %>
 
     <% } else if(user.identity === 'admin') { %>
         
-        <%- include topbar-admin %>
+        <%- include partials/topbar-admin %>
         
         <%- include index-admin %>
         

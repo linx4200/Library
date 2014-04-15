@@ -1,4 +1,13 @@
 <% include head %>
-    <% include topbar-student %>
-    <%= books[0].name %>
+    <% include partials/topbar-student %>
+    <div class="blockWrap searchWrap">
+        <% include partials/searchForm %>
+        <p class="searchResNum">关于 "<span id="skw"></span>" 的搜索结果共有 <%= books.length %> 个</p>
+        <div class="selectWrap">
+            <select id="bOrA">
+                <option value="book">书名</option>
+                <option value="author">作者</option>
+            </select>
+        </div>
+    </div>
 <% include foot %>

@@ -1,5 +1,5 @@
-<%- include head %>
-    <%- include topbar-admin %>
+<% include head %>
+    <% include partials/topbar-admin %>
     <h4 class="addBook-title">添加图书<a href="/" class="title-back">返回</a></h4>
     <form action="/add" method="POST" class="addBook" enctype="multipart/form-data">
         <div class="form-group"> 
@@ -54,4 +54,4 @@
         <input type="submit" class="submitBtn btn btn-block btn-primary" value="确定">
         <button type="button" class="cancelBtn btn btn-block btn-default">取消</button>
     </form>
-<%- include foot %>
+<% include foot %>

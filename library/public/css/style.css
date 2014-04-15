@@ -213,6 +213,18 @@
     text-indent: 2em;
 }
 
+/***** 搜索结果页 *****/
+.searchWrap .searchForm {
+    width: 500px;
+}
+.searchWrap .select .btn {
+    width:100px;
+    font-size: 16px;
+}
+.searchWrap .dropdown-menu {
+    min-height: 0 !important;
+}
+
 /***** 添加图书表单 *****/
 .addBook, .addBook-title {
     width: 500px;
