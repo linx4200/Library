@@ -1,20 +1,42 @@
 <%- include head %>
     <%- include partials/topbar-admin %>
     <div class="blockWrap">
-        <h4 class="">查看图书</h4>
-        <table>
-            <thead>
-                
-            </thead>
-
-            <tbody>
-                <% for(var i = 0, l = books.length; i < l; i++) { %>
+        <h4 class="viewBook-title">查看图书<a href="javascript:history.go(-1)" class="title-back">返回</a><span class="bookNum">共有 <%= books.length %> 本书</span></h4>
+        <% include partials/breadcrumb %>
+        <% if (books.length === 0) { %>
+            <div class="notFound">
+                很抱歉,该分类下没有图书...
+            </div>
+        <% } else { %>
+            <table class="book-table">
+                <thead>
                     <tr>
-                        <td><%= books[i].name %></td>
-                    </tr> 
-                <% } %>
-            </tbody>
-        </table>
+                        <th>书名</th>
+                        <th>作者</th>
+                        <th>出版社</th>
+                        <th>藏书量</th>
+                        <th>已借出</th>
+                        <th>查看</th>
+                        <th>编辑</th>
+                        <th>删除</th>
+                    </tr>       
+                </thead>
+                <tbody>
+                    <% for(var i = 0, l = books.length; i < l; i++) { %>
+                        <tr>
+                            <td><%= books[i].name %></td>
+                            <td><%= books[i].author %></td>
+                            <td><%= books[i].publisher %></td>
+                            <td><%= books[i].haveNum %></td>
+                            <td><%= books[i].haveNum - books[i].available%></td>
+                            <td><a href="/detail/<%= books[i]._id %>">查看</a></td>
+                            <td><a href="">编辑</a></td>
+                            <td><a href="">删除</a></td>
+                        </tr> 
+                    <% } %>
+                </tbody>
+            </table>
+        <% } %>
     </div>
     <% include partials/footer %>
 <%- include foot %>

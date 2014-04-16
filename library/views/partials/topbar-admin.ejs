@@ -1,4 +1,13 @@
-<header class="topbar cf">
+<header class="topbar cf" data-identity="<%= user.identity %>">
+    <div class="logo">
+        <a href="/"><img src="/images/Book.png" alt=""></a>
+    </div>
+    <%- include bookMenu %>
+    <ul class="menu-a">
+        <li><a href="/" class="cur">图书管理</a></li>
+        <li><a href="">统计信息</a></li>
+        <li><a href="">人员管理</a></li>
+    </ul>
     <div class="user">
         <a class="a-w userNo"><%= user.no %></a>
         <a href="/logout" class="a-w">登出</a>

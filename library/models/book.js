@@ -30,6 +30,7 @@ Book.prototype.add = function (callback) {
         type : this.type,
         subType : this.subType,
         haveNum : this.haveNum,
+        available : this.haveNum,
         cover : this.cover,
         summary : this.summary,
         list : this.list,

@@ -10568,7 +10568,10 @@ body {
 }
 .blockWrap { /*块级大容器*/
     padding: 30px;
-    padding-bottom: 50px;  /* 为footer预留位置 */
+    padding-bottom: 80px;  /* 为footer预留位置 */
+}
+.blockWrap .title {
+    margin:0 auto 30px;
 }
 .hr {  /* 红色 */
     color: #e74c3c;
@@ -10628,6 +10631,10 @@ body {
     float: right;
     margin-right: 15px;
 }
+.topbar .user a {
+    display: inline-block;
+    margin-right: 15px;
+}
 .topbar .userNo {
     color: #fff;
 }
@@ -10636,7 +10643,6 @@ body {
     height:30px;
     line-height: 30px;
     padding: 0;
-    margin:0 15px;
     display: inline-block;
     text-align: center;
 }
@@ -10684,6 +10690,21 @@ body {
     white-space: nowrap;
     padding: 5px !important;
 }
+.topbar .menu-a{
+    float: left; 
+    margin-left: 50px;
+    margin-bottom: 0;
+}
+.topbar .menu-a li{
+    display: inline-block;
+    margin-right: 30px;
+}
+.topbar .menu-a a{
+    color: #fff;
+}
+.topbar .menu-a .cur{
+    color: #1abc9c;
+}
 
 /***** FOOTER *****/
 .footer {
@@ -10703,7 +10724,7 @@ body {
 }
 
 /***** 首页样式 *****/
-.indexSwrap {
+.indexWrap {
     width: 600px;
     margin: 0 auto;
 }
@@ -10760,7 +10781,7 @@ body {
     margin-right: 15px;
     margin-top: 10px;
 }
-.infoWrap .lendBtn {
+.infoWrap .lendBtn{
     width: 150px;
 }
 .infoWrap .favoBtn {
@@ -10768,6 +10789,9 @@ body {
 }
 .favoBtn .fui-heart {
     color: white;
+}
+.infoWrap .editBtn, .infoWrap .deleBtn {
+    width: 100px;
 }
 
 /***** 图书详细页 *****/
@@ -10808,11 +10832,13 @@ body {
 }
 
 /***** 添加图书表单 *****/
-.addBook, .addBook-title {
+.addBookWrap, .addBookWrap .title {
     width: 500px;
-    margin:0 auto 30px;
+    margin: 0 auto;
 }
-
+.addBook {
+    margin-top: 15px;
+}
 .addBook label{
     width: 80px;
     display: inline-block;
@@ -10834,4 +10860,26 @@ body {
     margin: 0;
     margin-right: 20px;
     display: inline-block;
+}
+
+/***** 图书表格页 *****/
+.viewBook-title {
+    margin-top: 0;
+}
+.bookNum {
+    font-size: 16px;
+    float: right;
+}
+.book-table {
+    width: 100%;
+}
+.book-table thead {
+    font-weight: bold;
+    color: #fff;
+    background: #7F8C8D;
+    border-radius: 5px;
+}
+.book-table tr {
+    height: 40px;
+    line-height: 40px;
 }

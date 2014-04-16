@@ -13,7 +13,6 @@ var index = require('./index'),
     detail = require('./detail'),
     me = require('./me'),
     table = require('./table'),
-    type = require('./type'),
     comment = require('./comment'),
     favi = require('./favi'),
     info = require('./info'),
@@ -50,7 +49,6 @@ module.exports = function (app) {
     detail(app);
     me(app);
     table(app);
-    type(app);
     comment(app);
     favi(app);
     info(app);

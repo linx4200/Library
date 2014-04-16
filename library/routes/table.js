@@ -7,8 +7,19 @@ module.exports = function (app) {
 
     app.get('/table', function (req, res) {
 
+        var type = req.query.type,
+            subType = req.query.subtype,
+            query = {};
+
+        if (type) {
+            query.type = type;
+        }
+        if (subType) {
+            query.subType = subType;
+        }
+
         //获取图书
-        Book.get(function (err, books) {
+        Book.query(query, {}, function (err, books) {
             if (err) {
                 return res.render('table', {
                     user: req.session.user,
@@ -17,7 +28,9 @@ module.exports = function (app) {
             }
             res.render('table', {
                 user: req.session.user,
-                books : books
+                books : books,
+                type : type,
+                subType : subType
             });
         });
     });

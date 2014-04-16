@@ -1,17 +1,7 @@
 <% include head %>
     <% include partials/topbar-student %>
     <div class="bookListWrap blockWrap">
-        <ol class="breadcrumb">
-            <li><a href="/">图书</a></li>
-            <% if ( type && subType ) { %>
-                <li><a href="/list?type=<%= type %>"><%= type %></a></li>
-            <% } else if (type && !subType) { %>
-                <li><%= type %></li>
-            <% } %>
-            <% if ( subType ) { %>
-                <li class="active"><%= subType %></li>
-            <% } %>
-        </ol>
+        <% include partials/breadcrumb %>
         <div class="filter">
             <div class="sortWrap">
                 <span class="title">排序:</span>

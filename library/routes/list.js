@@ -49,7 +49,7 @@ module.exports = function (app) {
                 user: req.session.user,
                 books : books,
                 type : type,
-                subType : subType,
+                subType : subType
             });
         });
     });

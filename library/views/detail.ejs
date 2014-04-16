@@ -5,7 +5,7 @@
             <div class="coverWrap"><img src="/images/cover/<%= book.cover %>" alt="<%= book.name %>"></div>
             <div class="infoWrap">
                 <h4 class="name"><%= book.name %></h4>
-                <p class="auth">作者: <a href=""><%= book.author %></a></p>
+                <p class="auth">作者: <a href="/search?keyword=<%= book.author %>&by=author"><%= book.author %></a></p>
                 <p class="publisher">出版社: <%= book.publisher %></p>
                 <p class="time">出版时间: <%= book.time %></p>
                 <p class="isbn">ISBN: <%= book.isbn %></p>
@@ -18,8 +18,13 @@
 
                 <p class="type">可借: <%= book.available %> 本</p>
                 <div class="btnWrap">
-                    <a href="" class="btn lenBtn btn-primary">马上借阅</a>
-                    <a href="" class="btn favoBtn btn-inverse"><span class="fui-heart"></span></a>
+                    <% if (user.identity === 'student') { %> 
+                        <a href="" class="btn lenBtn btn-primary">马上借阅</a>
+                        <a href="" class="btn favoBtn btn-inverse"><span class="fui-heart"></span></a>
+                    <% } else if(user.identity === 'admin') { %>
+                        <a href="" class="btn editBtn btn-default">编辑</a>
+                        <a href="" class="btn deleBtn btn-default">删除</span></a>
+                    <% } %>
                 </div>
             </div>
         </div>

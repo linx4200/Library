@@ -1,0 +1,15 @@
+<ol class="breadcrumb">
+    <li><a href="/">图书</a></li>
+    <% if ( type && subType ) { %>
+        <% if (user.identity === 'student') { %>
+            <li><a href="/list?type=<%= type %>"><%= type %></a></li>
+        <% } else if (user.identity === 'admin') { %>
+            <li><a href="/table?type=<%= type %>"><%= type %></a></li>
+        <% } %>
+    <% } else if (type && !subType) { %>
+        <li><%= type %></li>
+    <% } %>
+    <% if ( subType ) { %>
+        <li class="active"><%= subType %></li>
+    <% } %>
+</ol>

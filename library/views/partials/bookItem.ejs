@@ -3,7 +3,7 @@
             <div class="coverWrap"><img src="/images/cover/<%= books[i].cover %>" alt="<%= books[i].name %>"></div>
             <div class="infoWrap">
                 <h4 class="name"><a href="/detail/<%= books[i]._id %>"><%= books[i].name %></a></h4>
-                <p class="auth">作者: <a href=""><%= books[i].author %></a></p>
+                <p class="auth">作者: <a href="/search?keyword=<%= books[i].author %>&by=author"><%= books[i].author %></a></p>
                 <p class="publisher">出版社: <%= books[i].publisher %></p>
                 <p class="time">出版时间: <%= books[i].time %></p>
                 <p class="isbn">ISBN: <%= books[i].isbn %></p>

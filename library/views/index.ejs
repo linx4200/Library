@@ -3,13 +3,22 @@
 
         <% include partials/topbar-student %>
 
-        <% include index-student %>
+        <div class="indexWrap blockWrap">
+            <h4>想借什么书吗?</h4>
+            <% include partials/searchForm %>
+        </div>
 
     <% } else if(user.identity === 'admin') { %>
         
         <% include partials/topbar-admin %>
         
-        <% include index-admin %>
+        <div class="indexWrap blockWrap">
+            <h4><a href="/table">查看图书</a></h4>
+            <p>还是</p>
+            <h4><a href="/add">添加图书</a></h4>
+            <p>还是想找书?</p>
+            <% include partials/searchForm %>
+        </div>
         
     <% } %>
     
