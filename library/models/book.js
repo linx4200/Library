@@ -154,3 +154,52 @@ Book.search = function (keyword, by, callback) {
         });
     });
 };
+
+//更新图书及其相关信息
+Book.update = function(query, operate, callback) {
+    //打开数据库
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);
+        }
+        //读取 books 集合
+        db.collection('books', function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);
+            }
+            //更新图书信息
+            collection.update(query, operate, function (err) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);
+                }
+                callback(null);
+            });
+        });
+    });
+};
+
+//根据条件删除一本图书
+Book.remove = function(query, callback) {
+    //打开数据库
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);
+        }
+        //读取 books 集合
+        db.collection('books', function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);
+            }
+            collection.remove(query, function (err) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);
+                }
+                callback(null);
+            });
+        });
+    });
+};

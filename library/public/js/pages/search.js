@@ -9,29 +9,21 @@ define(function (require, exports, module) {
         by = utils.getUrlParam('by'),
         prefix = '/search?keyword=' + w;
     
-    //选择框的样式
-    page.selectStyle = function () {
+    
+
+    page.init = function () {
+        //选择框的样式
         $('#bOrA').find('[value="' + by + '"]').attr('selected', 'selected');
         $('#bOrA').selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
-    };
 
-    //显示关键字
-    page.keyword = function () {
+        //显示关键字
         $('#skw').html(w);
-    };
 
-    //更改作者或是图书
-    page.changeBorA = function () {
+        //更改作者或是图书
         $('#bOrA').change(function () {
             var val = $(this).val();
             window.location.href = prefix + '&by=' + val;
         });
-    };
-
-    page.init = function () {
-        page.selectStyle();
-        page.keyword();
-        page.changeBorA();
     };
     
     module.exports = page;

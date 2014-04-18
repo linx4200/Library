@@ -72,3 +72,31 @@ User.get = function (no, callback) {
         });
     });
 };
+
+//借书功能
+User.borrow = function (no, bookId, callback) {
+    //打开数据库
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);//错误，返回 err 信息
+        }
+        //读取 users 集合
+        db.collection('users', function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);//错误，返回 err 信息
+            }
+            //查找用户学号（no键）值为 no 一个文档
+            collection.update({
+                no: no
+            }, { $push: { 'borrowBooks': bookId }},
+            function (err, user) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);//失败！返回 err 信息
+                }
+                callback(null, user);//成功！返回用户信息
+            });
+        });
+    });
+};

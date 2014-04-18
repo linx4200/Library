@@ -20,7 +20,7 @@ module.exports = function (app) {
             query.subType = subType;
         }
         if (!sort) {
-            sort = {};
+            sort = {$natural: -1};
         }
         if (sort === 'time') {
             sort = {

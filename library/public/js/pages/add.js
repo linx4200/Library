@@ -10,47 +10,47 @@ define(function (require, exports, module) {
         typeListHtml,
         page = {};
 
-    //生成主类别列表
-    page.createType = function () {
-        for (var i = 0, l = typeList.length; i < l; i++) {
-            typeListHtml += '<option value="' + typeList[i] + '">' + typeList[i] + '</option>';
-        }
-
-        $type.html(typeListHtml);
-    };
-
     //生成副类别列表
-    page.createSubType = function () {
+    function createSubType ($subType, subTypeList) {
         var subTypeListHtml;
-        for (var i = 0, l = typeConfig[typeList[0]].length; i < l; i++) {
-            subTypeListHtml += '<option value="' + typeConfig[typeList[0]][i] + '">' + typeConfig[typeList[0]][i] + '</option>';
+
+        for (var i = 0, l = subTypeList.length; i < l; i++) {
+            subTypeListHtml += '<option value="' + subTypeList[i] + '">' + subTypeList[i] + '</option>';
         }
 
         $subType.html(subTypeListHtml);
-    };
+    }
+    
+    page.init = function () {
 
-    //更换副类别列表
-    page.changeSubType = function () {
+        //更换副类别列表
         $type.change(function () {
 
             $subType.empty();
 
             var val = $(this).children('option:selected').val(),
-                subTypeList = typeConfig[val],
-                subTypeListHtml;
+                subTypeList = typeConfig[val];
 
-            for (var i = 0, l = subTypeList.length; i < l; i++) {
-                subTypeListHtml += '<option value="' + subTypeList[i] + '">' + subTypeList[i] + '</option>';
-            }
-
-            $subType.html(subTypeListHtml);
+            createSubType($subType, subTypeList);
         });
-    };
-    
-    page.init = function () {
-        page.createType();
-        page.createSubType();
-        page.changeSubType();
+
+        //生成主类别列表
+        for (var i = 0, l = typeList.length; i < l; i++) {
+            typeListHtml += '<option value="' + typeList[i] + '">' + typeList[i] + '</option>';
+        }
+
+        $type.html(typeListHtml);
+
+        if($type.attr('data-selected')) {
+            $type.find('option').each(function() {
+                if($(this).val() === $type.attr('data-selected')) {
+                    $(this).attr('selected', 'selected');
+                }
+            });
+            createSubType($subType, typeConfig[$type.attr('data-selected')]);
+        } else {
+            createSubType($subType, typeConfig[typeList[0]]);
+        }
     };
 
     module.exports = page;

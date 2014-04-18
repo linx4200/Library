@@ -14,8 +14,9 @@ define(function (require, exports, module) {
         return $('.topbar').attr('data-identity');
     }
 
-    //生成图书菜单
-    page.createMenu = function () {
+    page.init = function () {
+        
+        //生成图书菜单
         var listHtml,
             id = getIdentity();
         for (var i = 0, l = typeList.length; i < l; i++) {
@@ -26,10 +27,8 @@ define(function (require, exports, module) {
             }
         }
         $menu.html(listHtml);
-    };
 
-    //生成图书副类别列表
-    page.createSubType = function () {
+        //生成图书副类别列表
         $menu.children('li').mouseover(function () {
             var $this = $(this),
                 subListHtml,
@@ -55,21 +54,13 @@ define(function (require, exports, module) {
         }).mouseout(function () {
             $(this).find('.bookSubMenuWrap').hide();
         });
-    };
 
-    //搜索框focus时候的样式变化
-    page.searchStyleInit = function () {
+        //搜索框focus时候的样式变化
         $('.indexWrap #search-book').focus(function () {
             $(this).parents('.input-group').addClass('focus');
         }).focusout(function () {
             $(this).parents('.input-group').removeClass('focus');
-        });
-    };
-
-    page.init = function () {
-        page.createMenu();
-        page.createSubType();
-        page.searchStyleInit();
+        })
     };
     
     module.exports = page;

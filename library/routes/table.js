@@ -19,7 +19,7 @@ module.exports = function (app) {
         }
 
         //获取图书
-        Book.query(query, {}, function (err, books) {
+        Book.query(query, {$natural: -1}, function (err, books) {
             if (err) {
                 return res.render('table', {
                     user: req.session.user,

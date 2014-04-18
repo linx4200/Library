@@ -7,8 +7,10 @@ define(function (require, exports, module) {
         sort = utils.getUrlParam('sort'),
         page = {};
 
-    //初始化filter排序选项的样式
-    page.filterStyle = function () {
+    
+    
+    page.init = function () {
+        //初始化filter排序选项的样式
         if (!sort) {
             $('#sort-default').addClass('active');
         } else if (sort === 'time') {
@@ -16,10 +18,6 @@ define(function (require, exports, module) {
         } else if (sort === 'recommand') {
             $('#sort-recommand').addClass('active');
         }
-    };
-    
-    page.init = function () {
-        page.filterStyle();
     };
 
     module.exports = page;
