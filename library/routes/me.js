@@ -17,14 +17,20 @@ module.exports = function (app) {
                 return res.redirect('back');
             }
 
-            var books = user.borrowBooks;
+            var borrowBooks = user.borrowBooks || [];
 
-            console.log(books);
+            //转换时间格式
+            for (var i = 0, l = borrowBooks.length; i < l; i++) {
+                borrowBooks[i].date = (new Date(Number(borrowBooks[i].date))).toJSON().substring(0, 10);
+                borrowBooks[i].returnDate = (new Date(Number(borrowBooks[i].returnDate))).toJSON().substring(0, 10);
+            }
 
             res.render('me', {
                 user: user,
-                showMenu: true
+                books: borrowBooks
             });
+
+            
         });
 
     //     

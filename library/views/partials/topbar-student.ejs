@@ -3,14 +3,12 @@
         <a href="/"><img src="/images/Book.png" alt=""></a>
     </div>
     <%- include bookMenu %>
-    <% if (showMenu) { %>
-        <ul class="menu-a">
-            <li><a href="/me" class="cur">已借图书</a></li>
-            <li><a href="">收藏夹</a></li>
-            <li><a href="">浏览历史</a></li>
-            <li><a href="">个人资料</a></li>
-        </ul>
-    <% } %>
+    <ul class="menu dpn" id="menu-s">
+        <li><a href="/me" class="cur">已借图书</a></li>
+        <li><a href="">收藏夹</a></li>
+        <li><a href="">浏览历史</a></li>
+        <li><a href="">个人资料</a></li>
+    </ul>
     <div class="user">
         <a class="a-w userNo"  href="/me"><%= user.no %></a>
         <a class="returnBtn btn btn-block btn-primary">我要还书</a>

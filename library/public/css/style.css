@@ -36,6 +36,9 @@ body {
 .mb30 {
     margin-bottom: 30px;
 }
+.dpn {  /* 隐藏 */
+    display: none;
+}
 
 /*垂直居中 和 水平居中*/
 .center {
@@ -145,19 +148,19 @@ body {
     white-space: nowrap;
     padding: 5px !important;
 }
-.topbar .menu-a{
+.topbar .menu{
     float: left; 
     margin-left: 50px;
     margin-bottom: 0;
 }
-.topbar .menu-a li{
+.topbar .menu li{
     display: inline-block;
     margin-right: 30px;
 }
-.topbar .menu-a a{
+.topbar .menu a{
     color: #fff;
 }
-.topbar .menu-a .cur{
+.topbar .menu .cur{
     color: #1abc9c;
 }
 

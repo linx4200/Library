@@ -1,0 +1,14 @@
+<% for(var i = 0, l = books.length; i < l; i++) { %>
+        <div class="bookItem cf">
+            <div class="coverWrap"><img src="/images/cover/<%= books[i].cover %>" alt="<%= books[i].name %>"></div>
+            <div class="infoWrap">
+                <h4 class="name"><a href="/detail/<%= books[i]._id %>"><%= books[i].name %></a></h4>
+                <p class="auth">作者: <a href="/search?keyword=<%= books[i].author %>&by=author"><%= books[i].author %></a></p>
+                <p class="date">借书日期: <%= books[i].date %></p>
+                <p class="returnDate">还书日期: <%= books[i].returnDate %></p>
+                <div class="btnWrap">
+                    <a href="/lend/<%= books[i]._id %>" class="btn lenBtn btn-primary">马上还书</a>
+                </div>
+            </div>
+        </div>
+<% } %>

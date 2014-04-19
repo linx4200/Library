@@ -1,7 +1,17 @@
 <% include head %>
-
     <% include partials/topbar-student %>
-    
+    <div class="bookListWrap blockWrap">
+        <h6 class="mb30">目前未还图书</h6>
+        <% if (books.length ===0) { %>
+            <div class="notFound">
+                你没有借书哦~ 快去借一本吧!
+            </div>
+        <% } else { %>
+            <div class="bookList">
+                <%- include partials/bookItem-borrow %>
+            </div>
+        <% } %>
+    </div>
     <% include partials/footer %>
 
 <% include foot %>

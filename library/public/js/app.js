@@ -5,6 +5,7 @@ define(function (require, exports, module) {
         index = require('./pages/index'),
         list = require('./pages/list'),
         search = require('./pages/search'),
+        me = require('./pages/me'),
         app = {};
 
     app.init = function () {
@@ -22,6 +23,7 @@ define(function (require, exports, module) {
             index.init();
             list.init();
             search.init();
+            me.init();
         });
         
     };

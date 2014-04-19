@@ -40,6 +40,7 @@ module.exports = function (app) {
                     books: []
                 });
             }
+            
             //转换出版时间格式
             for (var i = 0, l = books.length; i < l; i++) {
                 books[i].time = (new Date(Number(books[i].time))).toJSON().substring(0, 10);
