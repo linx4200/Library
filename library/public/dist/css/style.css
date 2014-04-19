@@ -1,4 +1,4 @@
-/*! library - v0.0.1 - 2014-04-15 */
+/*! library - v0.0.1 - 2014-04-19 */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -10637,6 +10637,9 @@ body {
 }
 .topbar .userNo {
     color: #fff;
+}
+.topbar .userNo:hover {
+    text-decoration: underline;
 }
 .topbar .returnBtn {
     width:95px;

@@ -12,9 +12,14 @@
                 <% } else { %>
                     <p>暂无评论</p>
                 <% } %>
+                <p class="type">可借: <%= books[i].available %> 本</p>
                 <p class="summary clip"><%= books[i].summary %></p>
                 <div class="btnWrap">
-                    <a href="" class="btn lenBtn btn-primary">马上借阅</a>
+                    <% if (Number(books[i].available) === 0) { %>
+                        <a href="#fakelink" class="btn lenBtn btn-primary disabled">无法借阅</a>
+                    <% } else { %>
+                        <a href="/borrow/<%= books[i]._id %>" class="btn lenBtn btn-primary">马上借阅</a>
+                    <% } %>
                     <a href="" class="btn favoBtn btn-inverse"><span class="fui-heart"></span></a>
                 </div>
             </div>

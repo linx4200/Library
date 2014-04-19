@@ -13,7 +13,21 @@ module.exports = function (app) {
     });
 
     app.post('/add', function (req, res) {
-        var book = new Book(req.body.name, req.body.author, req.body.publisher, new Date(req.body.time).valueOf(), req.body.isbn, req.body.type, req.body.subType, req.body.haveNum, req.body.available, req.files.cover.originalFilename, req.body.summary, req.body.list, req.body.intro);
+        var book = new Book(
+            req.body.name,
+            req.body.author,
+            req.body.publisher,
+            new Date(req.body.time).valueOf(),
+            req.body.isbn,
+            req.body.type,
+            req.body.subType,
+            Number(req.body.haveNum),
+            Number(req.body.available),
+            req.files.cover.originalFilename,
+            req.body.summary,
+            req.body.list,
+            req.body.intro
+        );
         
         book.add(function (err) {
             if (err) {

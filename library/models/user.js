@@ -73,8 +73,8 @@ User.get = function (no, callback) {
     });
 };
 
-//借书功能
-User.borrow = function (no, bookId, callback) {
+//借书还书功能等更新数据数据库操作接口
+User.update = function (query, update, callback) {
     //打开数据库
     mongodb.open(function (err, db) {
         if (err) {
@@ -87,10 +87,7 @@ User.borrow = function (no, bookId, callback) {
                 return callback(err);//错误，返回 err 信息
             }
             //查找用户学号（no键）值为 no 一个文档
-            collection.update({
-                no: no
-            }, { $push: { 'borrowBooks': bookId }},
-            function (err, user) {
+            collection.update(query, update, function (err, user) {
                 mongodb.close();
                 if (err) {
                     return callback(err);//失败！返回 err 信息

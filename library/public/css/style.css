@@ -90,6 +90,9 @@ body {
 .topbar .userNo {
     color: #fff;
 }
+.topbar .userNo:hover {
+    text-decoration: underline;
+}
 .topbar .returnBtn {
     width:95px;
     height:30px;

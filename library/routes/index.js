@@ -10,7 +10,8 @@ module.exports = function (app) {
         if (req.session.user) {
             //如果登陆了
             res.render('index', {
-                user: req.session.user
+                user: req.session.user,
+                showMenu: false
             });
         } else {
             //如果没有登录,跳转到登录页面
