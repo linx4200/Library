@@ -1,4 +1,4 @@
-/*! library - v0.0.1 - 2014-04-19 */
+/*! library - v0.0.1 - 2014-04-20 */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -10584,6 +10584,9 @@ body {
 .mb30 {
     margin-bottom: 30px;
 }
+.b {
+    font-weight: bold;
+}
 .dpn {  /* 隐藏 */
     display: none;
 }
@@ -10708,7 +10711,7 @@ body {
 .topbar .menu a{
     color: #fff;
 }
-.topbar .menu .cur{
+.topbar .menu .cur a{
     color: #1abc9c;
 }
 
@@ -10905,4 +10908,15 @@ body {
 }
 .meWrap .dropdown-menu {
     min-height: 0 !important;
+}
+
+/***** 编辑个人资料页 *****/
+#myInfoForm {
+    width: 350px;
+}
+#myInfoForm .btn{
+    width: 150px;
+    display: inline-block;
+    margin:0;
+    margin-right: 15px;
 }

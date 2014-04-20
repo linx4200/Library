@@ -1,0 +1,28 @@
+<% include head %>
+    <% include partials/topbar-student %>
+    <div class="blockWrap">
+        <h4 class="title">个人资料<a href="javascript:history.go(-1)" class="title-back">返回</a></h4>
+        <form action="/info" method="POST" class="myInfo" enctype="multipart/form-data" id="myInfoForm">
+            <div class="form-group">
+                <label for="no">学号</label>
+                <input type="text" name="no" class="form-control" value="<%= user.no %>" disabled="disabled">
+            </div>
+            <div class="form-group"> 
+                <label for="nickname">昵称</label>
+                <input type="text" name="nickname" class="form-control" value="<%= user.nickname || ''%>">
+            </div>
+            <div class="form-group"> 
+                <label for="password">密码</label>
+                <input type="text" name="password" class="form-control" disabled="disabled">
+            </div>
+            <div class="form-group"> 
+                <label for="email">邮件</label>
+                <input type="text" name="email" class="form-control" value="<%= user.email || ''%>">
+            </div>
+            <input type="submit" class="submitBtn btn btn-block btn-primary" value="确定修改">
+            <button type="button" class="cancelBtn btn btn-block btn-default">取消</button>
+        </form>
+    </div>
+    <% include partials/footer %>
+
+<% include foot %>

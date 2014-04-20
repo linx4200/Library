@@ -1,20 +1,21 @@
 <% include head %>
     <% include partials/topbar-student %>
     <div class="bookListWrap blockWrap meWrap">
+        <h6 class="mb30 b">收藏夹</h6>
         <div class="selectWrap">
-            <select id="returnOrNot">
-                <option value="borrow">未还图书</option>
-                <option value="returning">已还图书</option>
+            <select id="favo-select">
+                <option value="all">全部</option>
+                <option value="can">可借</option>
+                <option value="not">不可借</option>
             </select>
         </div>
-        <h6 class="mb30 b">已还图书</h6>
         <% if (books.length ===0) { %>
             <div class="notFound">
-                木有已经还了的书!
+                收藏夹暂时木有书哦~ 去收藏几本吧!
             </div>
         <% } else { %>
             <div class="bookList">
-                <%- include partials/bookItem-borrow %>
+                <%- include partials/bookItem-favo %>
             </div>
         <% } %>
     </div>

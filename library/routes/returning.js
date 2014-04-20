@@ -84,7 +84,7 @@ module.exports = function (app) {
                 returnBooks[i].returnedDate = (new Date(Number(returnBooks[i].returnedDate))).toJSON().substring(0, 10);
             }
 
-            res.render('borrow', {
+            res.render('returning', {
                 user: user,
                 books: returnBooks,
                 page: 'return'

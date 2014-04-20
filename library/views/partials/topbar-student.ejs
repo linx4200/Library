@@ -4,9 +4,9 @@
     </div>
     <%- include bookMenu %>
     <ul class="menu dpn" id="menu-s">
-        <li><a href="/me" class="cur">已借图书</a></li>
-        <li><a href="/favo">收藏夹</a></li>
-        <li><a href="">个人资料</a></li>
+        <li data-value="borrow"><a href="/borrow">已借图书</a></li>
+        <li data-value="favo"><a href="/favo">收藏夹</a></li>
+        <li data-value="myInfo"><a href="/myInfo">个人资料</a></li>
     </ul>
     <div class="user">
         <a class="a-w userNo"  href="/borrow"><%= user.no %></a>

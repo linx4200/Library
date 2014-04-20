@@ -4,7 +4,9 @@
 
 module.exports = function (app) {
 
-    app.get('/info', function (req, res) {
-        res.send('编辑资料页');
+    app.get('/myInfo', function (req, res) {
+        res.render('myInfo', {
+            user: req.session.user
+        });
     });
 };

@@ -177,9 +177,16 @@ define("pages/me", [], function(require, exports, module) {
     page.init = function() {
         var $menu = $("#menu-s");
         //显示顶部Menu
-        var mePath = window.location.pathname;
-        if (mePath.search("borrow") >= 0 || mePath.search("returning") >= 0) {
+        var mePath = window.location.pathname.substring(1);
+        if (mePath === "borrow" || mePath === "returning" || mePath === "favo" || mePath === "myInfo") {
             $menu.show();
+            //样式
+            $menu.find('[data-value="' + mePath + '"]').addClass("cur");
+            if (mePath === "returning") {
+                $menu.find('[data-value="borrow"]').addClass("cur");
+            }
+        } else {
+            $menu.hide();
         }
         //计算相距时间
         var today = new Date().toJSON().substring(0, 10);
@@ -199,6 +206,11 @@ define("pages/me", [], function(require, exports, module) {
         $("#returnOrNot").change(function() {
             var val = $(this).val();
             window.location.href = "/" + val;
+        });
+        //收藏夹选择框
+        $("#favo-select").selectpicker({
+            style: "btn-hg btn-primary",
+            menuStyle: "dropdown-inverse"
         });
     };
     module.exports = page;

@@ -13,7 +13,7 @@ var index = require('./index'),
     detail = require('./detail'),
     table = require('./table'),
     comment = require('./comment'),
-    favi = require('./favi'),
+    favo = require('./favo'),
     info = require('./info'),
     add = require('./add'),
     edit = require('./edit'),
@@ -52,7 +52,7 @@ module.exports = function (app) {
     detail(app);
     table(app);
     comment(app);
-    favi(app);
+    favo(app);
     info(app);
     add(app);
     edit(app);
