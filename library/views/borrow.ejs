@@ -1,0 +1,33 @@
+<% include head %>
+    <% include partials/topbar-student %>
+    <div class="bookListWrap blockWrap meWrap">
+        <div class="selectWrap">
+            <select id="returnOrNot">
+                <option value="borrow">未还图书</option>
+                <option value="returning">已还图书</option>
+            </select>
+        </div>
+        <% if(page === 'borrow') { %>
+            <h6 class="mb30">目前未还图书</h6>
+        <% } else if(page === 'return') { %>
+            <h6 class="mb30">已还图书</h6>
+        <% } %>
+        <% if (books.length ===0) { %>
+            <% if(page === 'borrow') { %>
+                <div class="notFound">
+                    你没有借书哦~ 快去借一本吧!
+                </div>
+            <% } else if(page === 'return') { %>
+                <div class="notFound">
+                    木有已经还过的书!
+                </div>
+            <% } %>
+        <% } else { %>
+            <div class="bookList">
+                <%- include partials/bookItem-borrow %>
+            </div>
+        <% } %>
+    </div>
+    <% include partials/footer %>
+
+<% include foot %>

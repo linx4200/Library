@@ -11,7 +11,6 @@ var index = require('./index'),
     search = require('./search'),
     list = require('./list'),
     detail = require('./detail'),
-    me = require('./me'),
     table = require('./table'),
     comment = require('./comment'),
     favi = require('./favi'),
@@ -19,6 +18,7 @@ var index = require('./index'),
     add = require('./add'),
     edit = require('./edit'),
     remove = require('./remove'),
+    returning = require('./returning'),
     borrow = require('./borrow');
 
 // function checkLogin(req, res) {
@@ -50,7 +50,6 @@ module.exports = function (app) {
     search(app);
     list(app);
     detail(app);
-    me(app);
     table(app);
     comment(app);
     favi(app);
@@ -58,6 +57,7 @@ module.exports = function (app) {
     add(app);
     edit(app);
     remove(app);
+    returning(app);
     borrow(app);
 
     // app.use(function (req, res) {

@@ -22,7 +22,7 @@ define(function (require, exports, module) {
         //更改作者或是图书
         $('#bOrA').change(function () {
             var val = $(this).val();
-            window.location.href = prefix + '&by=' + val;
+            window.location.href = '/me/' + val;
         });
     };
     
