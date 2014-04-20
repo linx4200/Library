@@ -3,8 +3,9 @@
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
 node_modules
 
-.sublime-project
-.sublime-workspace
+*.sublime-project
+
+*.sublime-workspace
 
 # 忽略数据库
 mongodb
