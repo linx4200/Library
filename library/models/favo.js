@@ -1,26 +1,26 @@
 var mongodb = require('./db'),
-    borrow = {};
+    favo = {};
 
-module.exports = borrow;
+module.exports = favo;
 
-//借书功能 传入书本和用户ID
-borrow.borrow = function (userId, bookId, callback) {
+//收藏功能 传入书本和用户ID
+favo.add = function (userId, bookId, callback) {
     //打开数据库
     mongodb.open(function (err, db) {
         if (err) {
             return callback(err);//错误，返回 err 信息
         }
-        //读取 borrow 集合
-        db.collection('borrow', function (err, collection) {
+        //读取 favo 集合
+        db.collection('favo', function (err, collection) {
             if (err) {
                 mongodb.close();
                 return callback(err);//错误，返回 err 信息
             }
             var record = {
-                book_id : bookId,
-                user_id : userId,
-                borrowDate : (new Date()).valueOf(),
-                status: 0
+                book_id: bookId,
+                user_id: userId,
+                date:  (new Date()).valueOf(),
+                remind: 1
             };
             //插入记录
             collection.insert(record, function (err) {
@@ -35,49 +35,44 @@ borrow.borrow = function (userId, bookId, callback) {
 };
 
 
-//还书功能 传入书本和用户ID
-borrow.returning = function (userId, bookId, callback) {
+//取消收藏功能 传入书本和用户ID
+favo.remove = function (userId, bookId, callback) {
     //打开数据库
     mongodb.open(function (err, db) {
         if (err) {
-            return callback(err);//错误，返回 err 信息
+            return callback(err);
         }
-        //读取 users 集合
-        db.collection('borrow', function (err, collection) {
+        //读取 favo 集合
+        db.collection('favo', function (err, collection) {
             if (err) {
                 mongodb.close();
-                return callback(err);//错误，返回 err 信息
+                return callback(err);
             }
-
-            var returnDate = (new Date()).valueOf();
-
-            collection.update(
-                {user_id: userId, book_id: bookId},
-                {$set: {
-                    returnDate: returnDate,
-                    status: 1
-                }}, function (err, records) {
-                    mongodb.close();
-                    if (err) {
-                        return callback(err);//失败！返回 err 信息
-                    }
-                    callback(null, records);//成功！返回用户信息
+            collection.remove({
+                book_id: bookId,
+                user_id: userId
+            }, function (err) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);
+                }
+                callback(null);
             });
         });
     });
 };
 
 
-//根据传入的条件(query)来查找借书记录
-borrow.query = function (query, sort, callback) {
+//根据传入的条件(query)来查找收藏记录
+favo.query = function (query, sort, callback) {
     //打开数据库
     mongodb.open(function (err, db) {
         if (err) {
             return callback(err);
         }
 
-        //读取 books 集合
-        db.collection('borrow', function (err, collection) {
+        //读取 favo 集合
+        db.collection('favo', function (err, collection) {
             if (err) {
                 mongodb.close();
                 return callback(err);

@@ -251,6 +251,9 @@ body {
 .favoBtn .fui-heart {
     color: white;
 }
+.favoBtn .favoed {
+    color: #E74C3C;
+}
 .infoWrap .editBtn, .infoWrap .deleBtn {
     width: 100px;
 }

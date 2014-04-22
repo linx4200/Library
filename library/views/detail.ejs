@@ -26,7 +26,13 @@
                         <% } else { %>
                             <a href="/borrow/<%= book._id %>" class="btn lenBtn btn-primary">马上借阅</a>
                         <% } %>
-                        <a href="/favo/<%= book._id %>" class="btn favoBtn btn-inverse"><span class="fui-heart"></span></a>
+
+                        <% if (favoed) { %>
+                            <a href="/unfavo/<%= book._id %>" class="btn favoBtn btn-inverse"><span class="fui-heart favoed"></span></a>
+                        <% } else { %>
+                            <a href="/favo/<%= book._id %>" class="btn favoBtn btn-inverse"><span class="fui-heart"></span></a>
+                        <% } %> 
+                        
                     <% } else if(user.identity === 'admin') { %>
                         <a href="/edit/<%= book._id %>" class="btn editBtn btn-default">编辑</a>
                         <a href="/remove/<%= book._id %>" class="btn deleBtn btn-default">删除</span></a>

@@ -1,8 +1,9 @@
 /**
  *收藏页
  **/
-var Book = require('../models/book.js'),
-    User = require('../models/user.js'),
+var Book = require('../models/book'),
+    User = require('../models/user'),
+    favo = require('../models/favo'),
     ObjectID = require('mongodb').ObjectID;
 
 module.exports = function (app) {
@@ -10,51 +11,35 @@ module.exports = function (app) {
     app.get('/favo/:id', function (req, res) {
 
         var bookId = new ObjectID(req.params.id),
-            user = req.session.user;
-        
-        //如果超出上限就不允许借书
-        if(user.borrowBooks && user.borrowBooks.length > config.maxBorrowNum) {
-            req.flash('error', '超出借书限额');
-            res.redirect('back');
-        } else {
-            //没有超出就走正常流程
-            //先查询书本的相关信息
-            Book.query({'_id': bookId}, {}, function(err, book) {
-                if(err) {
-                    req.flash('error', 'err');
-                    res.redirect('back');
-                }
-                var theBook = {
-                    id: bookId,
-                    name: book[0].name,
-                    author: book[0].author,
-                    cover: book[0].cover,
-                    date: (new Date()).valueOf(),
-                    returnDate: (new Date()).valueOf() + config.returnDays
-                };
+            user = req.session.user,
+            userId = new ObjectID(user._id);
 
-                User.update({no: user.no}, {$push: {borrowBooks: theBook}}, function (err) {
-                    if (err) {
-                        req.flash('error', err);
-                        res.redirect('back');
-                    }
-                    
-                    //图书相应-1
-                    Book.update({
-                        _id : bookId
-                    }, {
-                        $inc : {available: -1}
-                    }, function (err) {
-                        if (err) {
-                            req.flash('error', err);
-                            res.redirect('back');
-                        }
-                        res.redirect('/borrow');
-                    });
-                });
-            });
-        }
-        
+        //插入收藏记录
+        favo.add(userId, bookId, function (err) {
+            if(err) {
+                req.flash('error', err);
+                return res.redirect('back');
+            }
+
+            res.redirect('back');
+        });
+    });
+
+    app.get('/unfavo/:id', function (req, res) {
+
+        var bookId = new ObjectID(req.params.id),
+            user = req.session.user,
+            userId = new ObjectID(user._id);
+
+        //取消收藏记录
+        favo.remove(userId, bookId, function (err) {
+            if(err) {
+                req.flash('error', err);
+                return res.redirect('back');
+            }
+
+            res.redirect('back');
+        });
     });
 
 
@@ -62,25 +47,44 @@ module.exports = function (app) {
 
         var user = req.session.user;
 
-        User.get(user.no, function (err, user) {
+        //查找书ID
+        favo.query({
+            user_id: new ObjectID(user._id)
+            }, {}, function (err, records) {
             if (err) {
                 req.flash('error', err);
-                return res.redirect('back');
+                res.redirect('back');
             }
+            if(records.length > 0) {
 
-            var favoBooks = user.favoBooks || [];
+                var bookIds = [];
 
-            //转换时间格式
-            for (var i = 0, l = favoBooks.length; i < l; i++) {
-                favoBooks[i].date = (new Date(Number(favoBooks[i].date))).toJSON().substring(0, 10);
+                
+                for(var i = 0,l = records.length; i < l; i++ ) {
+                    bookIds.push(records[i].book_id);
+
+                    // borrowDate.push((new Date(Number(records[i].borrowDate))).toJSON().substring(0, 10));
+
+                    // returnDate.push((new Date(Number(records[i].borrowDate) + config.returnDays)).toJSON().substring(0, 10));
+
+                }
+
+                Book.query({_id: {$in: bookIds}}, {}, function(err, books) {
+                    res.render('favo', {
+                        user: req.session.user,
+                        books: books
+                    });
+                });
+                
+            } else {
+                //没有找到记录
+                res.render('favo', {
+                    user: req.session.user,
+                    books: []
+                });
             }
-
-            res.render('favo', {
-                user: user,
-                books: favoBooks
-            });
-
             
-        });  
+        });
+
     });
 };

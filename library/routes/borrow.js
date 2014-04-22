@@ -1,5 +1,5 @@
 /**
- *新增图书页
+ *借书页
  **/
 var Book = require('../models/book'),
     User = require('../models/user'),
@@ -20,16 +20,18 @@ module.exports = function (app) {
                 return res.redirect('back');
             }
 
-            if (user.borrowBookNum && user.borrowBookNum > config.maxBorrowNum ) {
+            if (user.borrowBooksNum && (user.borrowBooksNum > config.maxBorrowNum) ) {
                 req.flash('error', '你已经借了15本书咯~不能再借了!先去还几本吧!');
                 return res.redirect('back');
             }
-
             //插入借书记录
-            borrow.borrow(user._id, bookId, function () {
-
-                //更新user.borrowBookNum
-                User.update({no: user.no}, {$inc : {borrowBookNum: 1}}, function(err) {
+            borrow.borrow(user._id, bookId, function (err) {
+                if(err) {
+                    req.flash('error', err);
+                    return res.redirect('back');
+                }
+                //更新user.borrowBooksNum
+                User.update({no: user.no}, {$inc : {borrowBooksNum: 1}}, function(err) {
                     if (err) {
                         req.flash('error', err);
                         return res.redirect('back');
@@ -47,8 +49,6 @@ module.exports = function (app) {
                     });
                 });
             });
-
-
         });
         
     });

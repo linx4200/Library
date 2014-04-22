@@ -4,6 +4,7 @@
 
 var Book = require('../models/book'),
     borrow = require('../models/borrow'),
+    favo = require('../models/favo'),
     ObjectID = require('mongodb').ObjectID;
 
 module.exports = function (app) {
@@ -23,45 +24,58 @@ module.exports = function (app) {
                 // });
             }
 
-            var thebook = books[0];
+            var thebook = books[0],
+                userId = new ObjectID(req.session.user._id),
+                borrowed,
+                favoed;
 
             //转换出版时间格式
             thebook.time = (new Date(Number(thebook.time))).toJSON().substring(0, 10);
 
             //查找改书有没有被该用户借过
             borrow.query({
-                user_id: new ObjectID(req.session.user._id),
+                user_id: userId,
                 status: 0
             }, {}, function (err, record) {
                 if (err) {
                     req.flash('error', err);
                     res.redirect('back');
                 }
-                if(record.length > 0) {
+
+                for(var i = 0,l = record.length; i < l; i++) {
+                    if(record[i].book_id.equals(new ObjectID(id))) {
+                        borrowed = true;
+                        break;
+                    } else {
+                        borrowed = false;
+                    }
+                }
+
+                //查询该书有没有被收藏
+                favo.query({
+                    user_id: userId
+                }, {}, function (err, record) {
+                    if (err) {
+                        req.flash('error', err);
+                        res.redirect('back');
+                    }
+
                     for(var i = 0,l = record.length; i < l; i++) {
                         if(record[i].book_id.equals(new ObjectID(id))) {
-                            res.render('detail', {
-                                user: req.session.user,
-                                book: thebook,
-                                borrowed: true
-                            });
+                            favoed = true;
                             break;
                         } else {
-                            res.render('detail', {
-                                user: req.session.user,
-                                book: thebook,
-                                borrowed: false
-                            });
+                            favoed = false;
                         }
                     }
-                    
-                } else {
-                    //没有找到记录
-                    req.flash('error', '没有找到记录');
-                    console.log('没有找到记录');
-                    res.redirect('404');
-                }
-                
+
+                    res.render('detail', {
+                        user: req.session.user,
+                        book: thebook,
+                        borrowed: borrowed,
+                        favoed: favoed
+                    });
+                });     
             });
 
             
