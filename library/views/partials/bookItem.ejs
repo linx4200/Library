@@ -10,18 +10,18 @@
                 <% if(books[i].comment) { %>
                     <p><%= books[i].comment.num %> 个人已评: <span class="hr"><%= books[i].comment.score %></span> 分</p>
                 <% } else { %>
-                    <p>暂无评论</p>
+                    <p>暂无评分</p>
                 <% } %>
                 <p class="type">可借: <%= books[i].available %> 本</p>
                 <p class="summary clip"><%= books[i].summary %></p>
-                <div class="btnWrap">
+                <!-- <div class="btnWrap">
                     <% if (Number(books[i].available) === 0) { %>
                         <a href="#fakelink" class="btn lenBtn btn-primary disabled">无法借阅</a>
                     <% } else { %>
                         <a href="/borrow/<%= books[i]._id %>" class="btn lenBtn btn-primary">马上借阅</a>
                     <% } %>
                     <a href="/favo/<%= books[i]._id %>" class="btn favoBtn btn-inverse"><span class="fui-heart"></span></a>
-                </div>
+                </div> -->
             </div>
         </div>
 <% } %>

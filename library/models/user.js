@@ -7,6 +7,7 @@ function User(user) {
     this.identity = user.identity;
     this.nickname = user.nickname;
     this.wechat = user.wechat;
+    this.borrowBooksNum = user.borrowBooksNum;
 }
 
 module.exports = User;
@@ -17,7 +18,8 @@ User.prototype.signUpSave = function (callback) {
     var user = {
         no: this.no,
         identity: this.identity,
-        password: this.password
+        password: this.password,
+        borrowBooksNum: this.borrowBooksNum
     };
 
     //打开数据库

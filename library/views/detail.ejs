@@ -13,7 +13,7 @@
                 <% if(book.comment) { %>
                     <p><%= book.comment.num %> 个人已评: <span class="hr"><%= book.comment.score %></span> 分</p>
                 <% } else { %>
-                    <p>暂无评论</p>
+                    <p>暂无评分</p>
                 <% } %>
 
                 <p class="type">可借: <%= book.available %> 本</p>
@@ -21,6 +21,8 @@
                     <% if (user.identity === 'student') { %> 
                         <% if (Number(book.available) === 0) { %>
                             <a href="#fakelink" class="btn lenBtn btn-primary disabled">无法借阅</a>
+                        <% } else if (borrowed) { %>
+                            <a href="#fakelink" class="btn lenBtn btn-primary disabled">已借阅</a>
                         <% } else { %>
                             <a href="/borrow/<%= book._id %>" class="btn lenBtn btn-primary">马上借阅</a>
                         <% } %>

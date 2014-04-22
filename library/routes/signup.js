@@ -31,8 +31,10 @@ module.exports = function (app, checkNotLogin) {
             newUser = new User({
                 no: req.body.no,
                 identity: req.body.identity,
-                password: password
+                password: password,
+                borrowBooksNum : 0
             });
+            
 
         //检查用户名是否已经存在 
         User.get(newUser.no, function (err, user) {
