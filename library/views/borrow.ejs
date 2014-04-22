@@ -7,7 +7,12 @@
                 <option value="returning">已还图书</option>
             </select>
         </div>
-        <h6 class="mb30 b">目前未还图书</h6>
+        <% if(page === 'borrow') { %>
+            <h6 class="mb30 b">未还图书</h6>
+        <% } else if(page === 'return') { %>
+            <h6 class="mb30 b">已还图书</h6>
+        <% } %>
+        
         <% if (books.length ===0) { %>
             <div class="notFound">
                 你没有借书哦~ 快去借一本吧!

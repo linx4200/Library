@@ -3,7 +3,7 @@ var mongodb = require('./db'),
 
 module.exports = borrow;
 
-//借书功能 传入书本和用户信息
+//借书功能 传入书本和用户ID
 borrow.borrow = function (userId, bookId, callback) {
     //打开数据库
     mongodb.open(function (err, db) {
@@ -19,7 +19,8 @@ borrow.borrow = function (userId, bookId, callback) {
             var record = {
                 book_id : bookId,
                 user_id : userId,
-                borrowDate : (new Date()).valueOf()
+                borrowDate : (new Date()).valueOf(),
+                status: 0
             };
 
             //插入记录
@@ -31,6 +32,39 @@ borrow.borrow = function (userId, bookId, callback) {
                     return callback(err);//失败！返回 err
                 }
                 callback(null);//返回 err 为 null
+            });
+        });
+    });
+};
+
+
+//还书功能 传入书本和用户ID
+borrow.borrow = function (userId, bookId, callback) {
+    //打开数据库
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);//错误，返回 err 信息
+        }
+        //读取 users 集合
+        db.collection('borrow', function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);//错误，返回 err 信息
+            }
+
+            var returnDate = (new Date()).valueOf();
+
+            collection.update(
+                {user_id: userId, book_id: bookId},
+                {$set: {
+                    returnDate: returnDate,
+                    status: 1
+                }}, function (err, records) {
+                    mongodb.close();
+                    if (err) {
+                        return callback(err);//失败！返回 err 信息
+                    }
+                    callback(null, records);//成功！返回用户信息
             });
         });
     });

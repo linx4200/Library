@@ -59,24 +59,37 @@ module.exports = function (app) {
         var user = req.session.user;
 
         //查找书ID
-        borrow.query({user_id: new ObjectID(user._id)}, {}, function (err, records) {
+        borrow.query({
+            user_id: new ObjectID(user._id),
+            status: 0
+        }, {}, function (err, records) {
             if (err) {
                 req.flash('error', err);
                 res.redirect('back');
             }
             if(records.length > 0) {
 
-                var bookIds = [];
+                var bookIds = [],
+                    borrowDate = [],
+                    returnDate = [];
+
                 
                 for(var i = 0,l = records.length; i < l; i++ ) {
                     bookIds.push(records[i].book_id);
+
+                    borrowDate.push((new Date(Number(records[i].borrowDate))).toJSON().substring(0, 10));
+
+                    returnDate.push((new Date(Number(records[i].borrowDate) + config.returnDays)).toJSON().substring(0, 10));
+
                 }
 
                 Book.query({_id: {$in: bookIds}}, {}, function(err, books) {
                     res.render('borrow', {
                         user: req.session.user,
                         books: books,
-                        page: 'borrow'
+                        page: 'borrow',
+                        borrowDate: borrowDate,
+                        returnDate: returnDate
                     });
                 });
                 

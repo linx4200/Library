@@ -29,7 +29,10 @@ module.exports = function (app) {
             thebook.time = (new Date(Number(thebook.time))).toJSON().substring(0, 10);
 
             //查找改书有没有被该用户借过
-            borrow.query({user_id: new ObjectID(req.session.user._id)}, {}, function (err, record) {
+            borrow.query({
+                user_id: new ObjectID(req.session.user._id),
+                status: 0
+            }, {}, function (err, record) {
                 if (err) {
                     req.flash('error', err);
                     res.redirect('back');
