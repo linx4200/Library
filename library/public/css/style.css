@@ -385,6 +385,15 @@ body {
     min-height: 0 !important;
 }
 
+/***** 收藏页 *****/
+.favoList .btnWrap {
+    position: relative;
+}
+.favoList .tooltip {
+    position: absolute;
+    top: -75px;
+    left: -45px;
+}
 /***** 编辑个人资料页 *****/
 #myInfoForm {
     width: 350px;

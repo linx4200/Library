@@ -20,7 +20,8 @@
             <p class="summary clip"><%= books[i].summary %></p>
             <div class="btnWrap">
                 <% if (Number(books[i].available) === 0) { %>
-                    <a href="#fakelink" class="btn lenBtn btn-primary disabled">设置提醒</a>
+                    <div class="tooltip fade top in dpn"><div class="tooltip-arrow"></div><div class="tooltip-inner">当图书可借时会收到提醒邮件哦!</div></div>
+                    <a href="#fakelink" class="btn lenBtn btn-primary" id="remindBtn">设置提醒</a>
                 <% } else { %>
                     <!-- <a href="/borrow/<%= books[i]._id %>" class="btn lenBtn btn-primary">马上借阅</a> -->
                 <% } %>

@@ -238,6 +238,12 @@ define("pages/me", [], function(require, exports, module) {
             style: "btn-hg btn-primary",
             menuStyle: "dropdown-inverse"
         });
+        //收藏夹设置提醒的tooltip
+        $("#remindBtn").mouseover(function() {
+            $(".favoList .tooltip").show();
+        }).mouseout(function() {
+            $(".favoList .tooltip").hide();
+        });
         //编辑个人资料页的tooltip
         $("#myInfoForm #email").focus(function() {
             $("#myInfoForm .tooltip").show();
