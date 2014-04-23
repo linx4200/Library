@@ -3,7 +3,7 @@
  **/
 
 module.exports = function (app) {
-
+    
     app.get('/', function (req, res) {
 
         //判断是否登录了

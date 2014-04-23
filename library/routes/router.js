@@ -21,21 +21,33 @@ var index = require('./index'),
     returning = require('./returning'),
     borrow = require('./borrow');
 
-// function checkLogin(req, res) {
-//     console.log('\n ===============  checkLogin  ============== \n');
-//     if (!req.session.user) {
-//         req.flash('error', '未登录!');
-//         res.redirect('/login');
-//     }
-// }
+function checkLogin(req, res, next) {
+    if (!req.session.user) {
+        req.flash('error', '未登录!');
+        res.redirect('/login');
+    } else {
+        next();
+    }
+}
 
 function checkNotLogin(req, res, next) {
     if (req.session.user) {
         req.flash('error', '已登录!');
         res.redirect('back');//返回之前的页面
+    } else {
+        next();
     }
-    next();
 }
+
+// function checkAdmin(req, res, next) {
+//     if (req.session.user) {
+//         req.flash('error', '已登录!');
+//         res.redirect('back');//返回之前的页面
+//     }
+//     next();
+// }
+
+
 
 module.exports = function (app) {
 
@@ -45,20 +57,25 @@ module.exports = function (app) {
     //以下页面需要登录
     // app.use(checkLogin);
 
-    index(app);
-    logout(app);
-    search(app);
-    list(app);
-    detail(app);
-    table(app);
+    //学生
+    list(app, checkLogin);
     comment(app);
     favo(app);
     info(app);
+    returning(app);
+    borrow(app);
+
+    //管理员
     add(app);
     edit(app);
     remove(app);
-    returning(app);
-    borrow(app);
+    table(app);
+
+    //共用
+    detail(app);
+    search(app, checkLogin);
+    index(app);
+    logout(app, checkLogin);
 
     // app.use(function (req, res) {
     //     res.render('404');

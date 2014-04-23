@@ -4,8 +4,9 @@
 
 var Book = require('../models/book');
 
-module.exports = function (app) {
+module.exports = function (app, checkLogin) {
 
+    app.get('/search', checkLogin);
     app.get('/search', function (req, res) {
         var keyword = req.query.keyword,
             by = req.query.by || 'book';  //默认按书名搜索

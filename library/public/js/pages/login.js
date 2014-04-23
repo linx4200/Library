@@ -18,7 +18,6 @@ define(function (require, exports, module) {
             }
         });
         
-
         $('#signUpForm, #login-form').validate({
             onBlur: true,
             eachValidField : function() {

@@ -4,8 +4,9 @@
 
 var Book = require('../models/book');
 
-module.exports = function (app) {
+module.exports = function (app, checkLogin) {
 
+    app.get('/list', checkLogin);
     app.get('/list', function (req, res) {
 
         var type = req.query.type,

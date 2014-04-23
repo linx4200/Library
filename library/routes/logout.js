@@ -2,8 +2,9 @@
  *这是登录页
  **/
 
-module.exports = function (app) {
+module.exports = function (app, checkLogin) {
 
+    app.get('/logout', checkLogin);
     app.get('/logout', function (req, res) {
         req.session.user = null;
         req.flash('success', '登出成功!');
