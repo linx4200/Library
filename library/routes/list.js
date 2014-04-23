@@ -11,6 +11,7 @@ module.exports = function (app) {
         var type = req.query.type,
             subType = req.query.subtype,
             sort = req.query.sort,
+            lendable = req.query.lendable,
             query = {};
 
         if (type) {
@@ -19,18 +20,17 @@ module.exports = function (app) {
         if (subType) {
             query.subType = subType;
         }
+        if(lendable) {
+            query.available = {$gt:0};
+        }
         if (!sort) {
             sort = {$natural: -1};
         }
         if (sort === 'time') {
-            sort = {
-                'time' : -1
-            };
+            sort.time = -1;
         }
         if (sort === 'comment') {
-            sort = {
-                'comment' : -1
-            };
+            sort.comment = -1;
         }
 
         Book.query(query, sort, function (err, books) {

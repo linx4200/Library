@@ -52,6 +52,9 @@ body {
     -moz-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+.form-group {
+    position: relative;
+}
 
 .form-error {
     margin-bottom: 20px;
@@ -218,6 +221,23 @@ body {
 .bookItem {
     margin-bottom: 30px;
 }
+.bookItem.disabled {
+    position: relative;
+}
+.bookItem.disabled .infoWrap {
+    z-index: 1;
+    position: relative;
+}
+.bookItem.disabled::before {
+    content: '';
+    position: absolute;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+    background-color: rgba(0,0,0,0.1);
+    z-index:0;
+}
 .coverWrap {
     float: left;
     width: 25%;
@@ -374,4 +394,16 @@ body {
     display: inline-block;
     margin:0;
     margin-right: 15px;
+}
+#myInfoForm .tooltip {
+    position: absolute;
+    top:0;
+    right:0;
+}
+#myInfoForm .changePwd {
+    font-weight: bold;
+    display: inline-block;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 255px;
 }

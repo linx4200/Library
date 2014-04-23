@@ -85,9 +85,11 @@ module.exports = function (app) {
                 
             } else {
                 //没有找到记录
-                req.flash('error', '没有找到记录');
-                console.log('没有找到记录');
-                res.redirect('404');
+                res.render('borrow', {
+                    user: req.session.user,
+                    books: [],
+                    page: 'return'
+                });
             }
             
         });

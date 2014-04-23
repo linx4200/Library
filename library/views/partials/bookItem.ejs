@@ -1,27 +1,31 @@
 <% for(var i = 0, l = books.length; i < l; i++) { %>
-        <div class="bookItem cf">
-            <div class="coverWrap"><img src="/images/cover/<%= books[i].cover %>" alt="<%= books[i].name %>"></div>
-            <div class="infoWrap">
-                <h4 class="name"><a href="/detail/<%= books[i]._id %>"><%= books[i].name %></a></h4>
-                <p class="auth">作者: <a href="/search?keyword=<%= books[i].author %>&by=author"><%= books[i].author %></a></p>
-                <p class="publisher">出版社: <%= books[i].publisher %></p>
-                <p class="time">出版时间: <%= books[i].time %></p>
-                <p class="isbn">ISBN: <%= books[i].isbn %></p>
-                <% if(books[i].comment) { %>
-                    <p><%= books[i].comment.num %> 个人已评: <span class="hr"><%= books[i].comment.score %></span> 分</p>
+    <% if (books[i].available > 0) { %>
+    <div class="bookItem cf">
+    <% } else { %>
+    <div class="bookItem cf disabled">
+    <% } %>
+        <div class="coverWrap"><img src="/images/cover/<%= books[i].cover %>" alt="<%= books[i].name %>"></div>
+        <div class="infoWrap">
+            <h4 class="name"><a href="/detail/<%= books[i]._id %>"><%= books[i].name %></a></h4>
+            <p class="auth">作者: <a href="/search?keyword=<%= books[i].author %>&by=author"><%= books[i].author %></a></p>
+            <p class="publisher">出版社: <%= books[i].publisher %></p>
+            <p class="time">出版时间: <%= books[i].time %></p>
+            <p class="isbn">ISBN: <%= books[i].isbn %></p>
+            <% if(books[i].comment) { %>
+                <p><%= books[i].comment.num %> 个人已评: <span class="hr"><%= books[i].comment.score %></span> 分</p>
+            <% } else { %>
+                <p>暂无评分</p>
+            <% } %>
+            <p class="type">可借: <%= books[i].available %> 本</p>
+            <p class="summary clip"><%= books[i].summary %></p>
+            <!-- <div class="btnWrap">
+                <% if (Number(books[i].available) === 0) { %>
+                    <a href="#fakelink" class="btn lenBtn btn-primary disabled">无法借阅</a>
                 <% } else { %>
-                    <p>暂无评分</p>
+                    <a href="/borrow/<%= books[i]._id %>" class="btn lenBtn btn-primary">马上借阅</a>
                 <% } %>
-                <p class="type">可借: <%= books[i].available %> 本</p>
-                <p class="summary clip"><%= books[i].summary %></p>
-                <!-- <div class="btnWrap">
-                    <% if (Number(books[i].available) === 0) { %>
-                        <a href="#fakelink" class="btn lenBtn btn-primary disabled">无法借阅</a>
-                    <% } else { %>
-                        <a href="/borrow/<%= books[i]._id %>" class="btn lenBtn btn-primary">马上借阅</a>
-                    <% } %>
-                    <a href="/favo/<%= books[i]._id %>" class="btn favoBtn btn-inverse"><span class="fui-heart"></span></a>
-                </div> -->
-            </div>
+                <a href="/favo/<%= books[i]._id %>" class="btn favoBtn btn-inverse"><span class="fui-heart"></span></a>
+            </div> -->
         </div>
+    </div>
 <% } %>

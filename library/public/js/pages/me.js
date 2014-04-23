@@ -68,6 +68,24 @@ define(function (require, exports, module) {
 
         //收藏夹选择框
         $('#favo-select').selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+
+        //编辑个人资料页的tooltip
+        $('#myInfoForm #email').focus(function() {
+            $('#myInfoForm .tooltip').show();
+        }).blur(function() {
+            $('#myInfoForm .tooltip').hide();
+        });
+
+        //编辑个人资料页修改密码
+        $('#myInfoForm .changePwd').click(function() {
+            $('#myInfoForm input[name="password"]').removeAttr('disabled');
+            $('#myInfoForm .passwordRepeatWrap').show();
+        });
+
+        //编辑个人资料页没有需改不允许提交
+        $('#myInfoForm input').change(function () {
+            $('#myInfoForm .submitBtn').removeAttr('disabled');
+        });
     };  
     
     module.exports = page;
