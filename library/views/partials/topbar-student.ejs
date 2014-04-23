@@ -9,7 +9,7 @@
         <li data-value="myInfo"><a href="/myInfo">个人资料</a></li>
     </ul>
     <div class="user">
-        <a class="a-w userNo"  href="/borrow"><%= user.no %></a>
+        <a class="a-w userNo"  href="/borrow"><%= user.nickname || user.no %></a>
         <a href="/borrow" class="returnBtn btn btn-block btn-primary">我要还书</a>
         <a href="/logout" class="a-w">登出</a>
     </div>

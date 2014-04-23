@@ -45,12 +45,13 @@ module.exports = function (app) {
 
     app.get('/favo', function (req, res) {
 
-        var user = req.session.user;
+        var user = req.session.user,
+            lendable = req.query.lendable;
 
         //查找书ID
         favo.query({
             user_id: new ObjectID(user._id)
-            }, {}, function (err, records) {
+        }, {}, function (err, records) {
             if (err) {
                 req.flash('error', err);
                 res.redirect('back');
@@ -69,7 +70,15 @@ module.exports = function (app) {
 
                 }
 
-                Book.query({_id: {$in: bookIds}}, {}, function(err, books) {
+                var query = {_id: {$in: bookIds}};
+
+                if(lendable === 'true') {
+                    query.available = {$gt:0};
+                } else if (lendable === 'false') {
+                    query.available = {$lte:0};
+                }
+
+                Book.query(query, {}, function(err, books) {
                     res.render('favo', {
                         user: req.session.user,
                         books: books

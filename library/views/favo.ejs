@@ -2,11 +2,11 @@
     <% include partials/topbar-student %>
     <div class="bookListWrap blockWrap meWrap">
         <h6 class="mb30 b">收藏夹</h6>
-        <div class="selectWrap">
+        <div class="selectWrap favoSelectWrap">
             <select id="favo-select">
                 <option value="all">全部</option>
-                <option value="can">可借</option>
-                <option value="not">不可借</option>
+                <option value="true">可借</option>
+                <option value="false">不可借</option>
             </select>
         </div>
         <% if (books.length ===0) { %>

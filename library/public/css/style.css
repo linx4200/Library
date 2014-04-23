@@ -219,7 +219,7 @@ body {
     color: #fff;
 }
 .bookItem {
-    margin-bottom: 30px;
+    padding:30px;
 }
 .bookItem.disabled {
     position: relative;
@@ -394,6 +394,9 @@ body {
     top: -75px;
     left: -45px;
 }
+.favoSelectWrap {
+    margin-bottom: 20px;
+}
 /***** 编辑个人资料页 *****/
 #myInfoForm {
     width: 350px;
@@ -409,7 +412,7 @@ body {
     top:0;
     right:0;
 }
-#myInfoForm .changePwd {
+#myInfoForm .changePwd, #myInfoForm .cancelPwd {
     font-weight: bold;
     display: inline-block;
     text-decoration: underline;

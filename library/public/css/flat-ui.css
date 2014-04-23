@@ -4364,7 +4364,6 @@ body.vjs-full-window {
   position: relative;
 }
 .login-form .login-field {
-  border-color: transparent;
   font-size: 17px;
   text-indent: 3px;
   width:100%;
@@ -4383,6 +4382,24 @@ body.vjs-full-window {
   top: 0;
   -webkit-transition: 0.25s;
   transition: 0.25s;
+}
+.has-error .login-field-icon{
+  color: #e74c3c;
+}
+.has-success .login-field-icon{
+  color: #2ecc71;
+}
+.has-error .login-field:focus {
+  border-color: #e74c3c;
+}
+.has-error .login-field:focus + .login-field-icon {
+  color: #e74c3c;
+}
+.has-success .login-field:focus {
+  border-color: #2ecc71;
+}
+.has-success .login-field:focus + .login-field-icon {
+  color: #2ecc71;
 }
 .login-form .btn-lg {
   width: 100%;

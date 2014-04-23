@@ -3,7 +3,8 @@
 
 define(function (require, exports, module) {
 
-    var page = {};
+    var page = {},
+        utils = require('../components/utils');
 
     //计算两个日期的时间间隔 
     function compareDate(start,end){ 
@@ -67,14 +68,22 @@ define(function (require, exports, module) {
         });
 
         //收藏夹选择框
+        var lendable = utils.getUrlParam('lendable');
+        $('#favo-select').find('[value="' + lendable + '"]').attr('selected', 'selected');
         $('#favo-select').selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+
+        //收藏夹可借还是不可借
+        $('#favo-select').change(function () {
+            var val = $(this).val();
+            window.location.href = '/favo?lendable=' + val;
+        });
 
         //收藏夹设置提醒的tooltip
         $('#remindBtn').mouseover(function () {
            $('.favoList .tooltip').show();
         }).mouseout(function () {
             $('.favoList .tooltip').hide();
-        });;
+        });
 
         //编辑个人资料页的tooltip
         $('#myInfoForm #email').focus(function() {
@@ -84,9 +93,15 @@ define(function (require, exports, module) {
         });
 
         //编辑个人资料页修改密码
-        $('#myInfoForm .changePwd').click(function() {
+        $('body').on('click', '#myInfoForm .changePwd', function() {
             $('#myInfoForm input[name="password"]').removeAttr('disabled');
             $('#myInfoForm .passwordRepeatWrap').show();
+            $('#myInfoForm label[for="password"]').html('新密码 <span class="cancelPwd">取消</span>');
+        });
+        $('body').on('click', '#myInfoForm .cancelPwd', function() {
+            $('#myInfoForm input[name="password"]').attr('disabled', 'disabled');
+            $('#myInfoForm .passwordRepeatWrap').hide();
+            $('#myInfoForm label[for="password"]').html('密码 <span class="changePwd">修改密码</span>');
         });
 
         //编辑个人资料页没有需改不允许提交

@@ -177,11 +177,29 @@ define("pages/login", [], function(require, exports, module) {
     var page = {};
     page.init = function() {
         $(".login-screen").height(window.innerHeight);
+        //切换提示语
+        $('input[name="identity"]').change(function() {
+            var identity = $('input[name="identity"]:checked').val();
+            if (identity === "student") {
+                $('input[name="no"]').attr("placeholder", "请输入学号");
+            } else if (identity === "admin") {
+                $('input[name="no"]').attr("placeholder", "请输入工号");
+            }
+        });
+        $("#signUpForm").validate({
+            onBlur: true,
+            eachValidField: function() {
+                $(this).closest(".validateInput").removeClass("has-error").addClass("has-success");
+            },
+            eachInvalidField: function() {
+                $(this).closest(".validateInput").removeClass("has-success").addClass("has-error");
+            }
+        });
     };
     module.exports = page;
 });
-define("pages/me", [], function(require, exports, module) {
-    var page = {};
+define("pages/me", [ "../components/utils" ], function(require, exports, module) {
+    var page = {}, utils = require("../components/utils");
     //计算两个日期的时间间隔 
     function compareDate(start, end) {
         if (start === null || start.length === 0 || end === null || end.length === 0) {
@@ -234,9 +252,16 @@ define("pages/me", [], function(require, exports, module) {
             window.location.href = "/" + val;
         });
         //收藏夹选择框
+        var lendable = utils.getUrlParam("lendable");
+        $("#favo-select").find('[value="' + lendable + '"]').attr("selected", "selected");
         $("#favo-select").selectpicker({
             style: "btn-hg btn-primary",
             menuStyle: "dropdown-inverse"
+        });
+        //收藏夹可借还是不可借
+        $("#favo-select").change(function() {
+            var val = $(this).val();
+            window.location.href = "/favo?lendable=" + val;
         });
         //收藏夹设置提醒的tooltip
         $("#remindBtn").mouseover(function() {
@@ -251,9 +276,15 @@ define("pages/me", [], function(require, exports, module) {
             $("#myInfoForm .tooltip").hide();
         });
         //编辑个人资料页修改密码
-        $("#myInfoForm .changePwd").click(function() {
+        $("body").on("click", "#myInfoForm .changePwd", function() {
             $('#myInfoForm input[name="password"]').removeAttr("disabled");
             $("#myInfoForm .passwordRepeatWrap").show();
+            $('#myInfoForm label[for="password"]').html('新密码 <span class="cancelPwd">取消</span>');
+        });
+        $("body").on("click", "#myInfoForm .cancelPwd", function() {
+            $('#myInfoForm input[name="password"]').attr("disabled", "disabled");
+            $("#myInfoForm .passwordRepeatWrap").hide();
+            $('#myInfoForm label[for="password"]').html('密码 <span class="changePwd">修改密码</span>');
         });
         //编辑个人资料页没有需改不允许提交
         $("#myInfoForm input").change(function() {

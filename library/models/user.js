@@ -88,13 +88,13 @@ User.update = function (query, update, callback) {
                 mongodb.close();
                 return callback(err);//错误，返回 err 信息
             }
-            //查找用户学号（no键）值为 no 一个文档
-            collection.update(query, update, function (err, user) {
+            
+            collection.update(query, update, function (err) {
                 mongodb.close();
                 if (err) {
                     return callback(err);//失败！返回 err 信息
                 }
-                callback(null, user);//成功！返回用户信息
+                callback(null);//成功！返回用户信息
             });
         });
     });
