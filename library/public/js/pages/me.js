@@ -108,6 +108,18 @@ define(function (require, exports, module) {
         $('#myInfoForm input').change(function () {
             $('#myInfoForm .submitBtn').removeAttr('disabled');
         });
+
+
+        //编辑个人资料页验证
+        $('#myInfoForm').validate({
+            onBlur: true,
+            eachValidField : function() {
+                $(this).closest('.validateInput').removeClass('has-error').addClass('has-success');
+            },
+            eachInvalidField : function() {
+                $(this).closest('.validateInput').removeClass('has-success').addClass('has-error');
+            }
+        });
     };  
     
     module.exports = page;

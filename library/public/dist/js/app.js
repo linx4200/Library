@@ -186,7 +186,7 @@ define("pages/login", [], function(require, exports, module) {
                 $('input[name="no"]').attr("placeholder", "请输入工号");
             }
         });
-        $("#signUpForm").validate({
+        $("#signUpForm, #login-form").validate({
             onBlur: true,
             eachValidField: function() {
                 $(this).closest(".validateInput").removeClass("has-error").addClass("has-success");
@@ -289,6 +289,16 @@ define("pages/me", [ "../components/utils" ], function(require, exports, module)
         //编辑个人资料页没有需改不允许提交
         $("#myInfoForm input").change(function() {
             $("#myInfoForm .submitBtn").removeAttr("disabled");
+        });
+        //编辑个人资料页验证
+        $("#myInfoForm").validate({
+            onBlur: true,
+            eachValidField: function() {
+                $(this).closest(".validateInput").removeClass("has-error").addClass("has-success");
+            },
+            eachInvalidField: function() {
+                $(this).closest(".validateInput").removeClass("has-success").addClass("has-error");
+            }
         });
     };
     module.exports = page;

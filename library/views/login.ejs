@@ -6,7 +6,7 @@
                 <h4>Welcome to <span class="b">图书借阅管理系统</span></h4>
             </div>
 
-            <form class="login-form" action="/login" method="POST">
+            <form class="login-form" action="/login" method="POST" id="login-form">
                 <div class="form-group">
                     <label class="radio">
                         <input type="radio" name="identity" id="optionsRadios1" value="student" data-toggle="radio" checked="checked">
@@ -17,13 +17,13 @@
                         管理员
                       </label>
                 </div>
-                <div class="form-group">
-                    <input type="text" class="form-control login-field" value="" placeholder="请输入学号" id="login-name" name="no" />
+                <div class="form-group validateInput">
+                    <input type="text" class="form-control login-field" value="" placeholder="请输入学号" id="login-name" name="no" data-required data-pattern="^[0-9]+$"/>
                     <label class="login-field-icon fui-user" for="no"></label>
                 </div>
 
-                <div class="form-group">
-                    <input type="password" class="form-control login-field" value="" placeholder="请输入密码" id="login-pass" name="password" />
+                <div class="form-group validateInput">
+                    <input type="password" class="form-control login-field" value="" placeholder="请输入密码(6~16位)" id="login-pass" name="password" data-pattern="[a-zA-Z0-9]{6,16}" data-required />
                     <label class="login-field-icon fui-lock" for="password"></label>
                 </div>
 

@@ -19,7 +19,7 @@ define(function (require, exports, module) {
         });
         
 
-        $('#signUpForm').validate({
+        $('#signUpForm, #login-form').validate({
             onBlur: true,
             eachValidField : function() {
                 $(this).closest('.validateInput').removeClass('has-error').addClass('has-success');
