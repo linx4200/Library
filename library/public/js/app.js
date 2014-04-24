@@ -6,6 +6,7 @@ define(function (require, exports, module) {
         list = require('./pages/list'),
         search = require('./pages/search'),
         me = require('./pages/me'),
+        removeBook = require('./pages/removeBook'),
         app = {};
 
     app.init = function () {
@@ -16,6 +17,9 @@ define(function (require, exports, module) {
                 'min-height': window.innerHeight
             });
 
+            if($('.alert-danger').is(':visible')) {
+                $('.alert-danger').fadeOut(3000);
+            }
 
             //pages
             add.init();
@@ -24,6 +28,7 @@ define(function (require, exports, module) {
             list.init();
             search.init();
             me.init();
+            removeBook.init();
         });
         
     };

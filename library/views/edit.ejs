@@ -1,5 +1,8 @@
 <% include head %>
     <% include partials/topbar-admin %>
+    <% if(error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+    <% } %>
     <div class="blockWrap addBookWrap">
         <h4 class="title">编辑图书<a href="javascript:history.go(-1)" class="title-back">返回</a></h4>
         <form action="/edit" method="POST" class="addBook" enctype="multipart/form-data" id="editBookForm">
@@ -54,8 +57,12 @@
                 <label for="intro">前言</label>
                 <textarea name="intro" id="" class="form-control"><%= book.intro %></textarea>
             </div>
-            <input type="submit" class="submitBtn btn btn-block btn-primary" value="确定">
-            <button type="button" class="cancelBtn btn btn-block btn-default">取消</button>
+            <div class="alert alert-warning dpn removeWarning">
+                确定要删除该图书吗?<a href="/remove/<%= book._id %>" class="alert-link">确定</a><a href="" class="alert-link cancelRemoveBtn">取消</a>
+            </div>
+            <input type="submit" class="submitBtn btn btn-block btn-primary" value="提交修改">
+            <a class="btn deleBtn btn-default removeBookBtn">删除该书</span></a>
+            <a href="javascript:history.go(-1)" type="button" class="cancelBtn btn btn-block btn-default">取消</a>
         </form>
     </div>
     <% include partials/footer %>

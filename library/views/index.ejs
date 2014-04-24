@@ -1,6 +1,10 @@
 <% include head %>
     <% if(user.identity === 'student') { %>
         <% include partials/topbar-student %>
+        
+        <% if(error) { %>
+            <div class="alert alert-danger"><%= error %></div>
+        <% } %>
 
         <div class="indexWrap blockWrap">
             <h4>想借什么书吗?</h4>
@@ -10,6 +14,10 @@
     <% } else if(user.identity === 'admin') { %>
         
         <% include partials/topbar-admin %>
+
+        <% if(error) { %>
+            <div class="alert alert-danger"><%= error %></div>
+        <% } %>
         
         <div class="indexWrap blockWrap">
             <h4><a href="/table">查看图书</a></h4>

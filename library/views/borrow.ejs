@@ -1,6 +1,9 @@
 <% include head %>
     <% include partials/topbar-student %>
     <div class="bookListWrap blockWrap meWrap">
+        <% if(error) { %>
+            <div class="alert alert-danger"><%= error %></div>
+        <% } %>
         <div class="selectWrap">
             <select id="returnOrNot">
                 <option value="borrow">未还图书</option>

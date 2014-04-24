@@ -20,7 +20,8 @@ borrow.borrow = function (userId, bookId, callback) {
                 book_id : bookId,
                 user_id : userId,
                 borrowDate : (new Date()).valueOf(),
-                status: 0
+                status: 0,
+                comment: 0
             };
             //插入记录
             collection.insert(record, function (err) {

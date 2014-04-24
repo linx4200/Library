@@ -74,7 +74,8 @@ module.exports = function (app, checkLogin) {
                         user: req.session.user,
                         book: thebook,
                         borrowed: borrowed,
-                        favoed: favoed
+                        favoed: favoed,
+                        error : req.flash('error').toString()
                     });
                 });     
             });

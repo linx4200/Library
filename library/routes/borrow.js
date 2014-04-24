@@ -90,7 +90,8 @@ module.exports = function (app, checkStudent) {
                         books: books,
                         page: 'borrow',
                         borrowDate: borrowDate,
-                        returnDate: returnDate
+                        returnDate: returnDate,
+                        error : req.flash('error').toString()
                     });
                 });
                 
@@ -99,7 +100,8 @@ module.exports = function (app, checkStudent) {
                 res.render('borrow', {
                     user: req.session.user,
                     books: [],
-                    page: 'borrow'
+                    page: 'borrow',
+                    error : req.flash('error').toString()
                 });
             }
             

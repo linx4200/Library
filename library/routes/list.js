@@ -38,7 +38,8 @@ module.exports = function (app, checkStudent) {
             if (err) {
                 return res.render('booklist', {
                     user: req.session.user,
-                    books: []
+                    books: [],
+                    error : req.flash('error').toString()
                 });
             }
             
@@ -51,7 +52,8 @@ module.exports = function (app, checkStudent) {
                 user: req.session.user,
                 books : books,
                 type : type,
-                subType : subType
+                subType : subType,
+                error : req.flash('error').toString()
             });
         });
     });

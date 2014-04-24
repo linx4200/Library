@@ -1,5 +1,8 @@
 <% include head %>
     <% include partials/topbar-student %>
+    <% if(error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+    <% } %>
     <div class="blockWrap">
         <h4 class="title">个人资料<a href="javascript:history.go(-1)" class="title-back">返回</a></h4>
         <form action="/myInfo" method="POST" class="myInfo" enctype="multipart/form-data" id="myInfoForm">

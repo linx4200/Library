@@ -1,5 +1,8 @@
 <%- include head %>
     <%- include partials/topbar-admin %>
+    <% if(error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+    <% } %>
     <div class="blockWrap">
         <h4 class="viewBook-title">查看图书<a href="javascript:history.go(-1)" class="title-back">返回</a><span class="bookNum">共有 <%= books.length %> 本书</span></h4>
         <% include partials/breadcrumb %>
@@ -18,7 +21,6 @@
                         <th>已借出</th>
                         <th>查看</th>
                         <th>编辑</th>
-                        <th>删除</th>
                     </tr>       
                 </thead>
                 <tbody>
@@ -31,7 +33,6 @@
                             <td><%= books[i].haveNum - books[i].available%></td>
                             <td><a href="/detail/<%= books[i]._id %>">查看</a></td>
                             <td><a href="/edit/<%= books[i]._id %>">编辑</a></td>
-                            <td><a href="/remove/<%= books[i]._id %>">删除</a></td>
                         </tr> 
                     <% } %>
                 </tbody>

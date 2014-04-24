@@ -9,7 +9,8 @@ module.exports = function (app, checkAdmin) {
     app.get('/add', checkAdmin);
     app.get('/add', function (req, res) {
         res.render('add', {
-            user: req.session.user
+            user: req.session.user,
+            error : req.flash('error').toString()
         });
     });
 

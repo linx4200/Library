@@ -1,4 +1,4 @@
-/*! library - v0.0.1 - 2014-04-23 */
+/*! library - v0.0.1 - 2014-04-24 */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -46,6 +46,10 @@ table {
 *, *:before, *:after {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
  }
+
+textarea {
+    resize: none;
+}
 /*!
  * Bootstrap v3.1.0 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
@@ -4480,10 +4484,11 @@ a.thumbnail.active {
   color: #333;
 }
 .alert {
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 10px;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 4px; 
+  width: 60%;
+  margin: 30px auto;
 }
 .alert h4 {
   margin-top: 0;
@@ -10639,6 +10644,16 @@ body {
     vertical-align: top;
 }
 
+.btnWrap .alert{
+    margin:0;
+}
+
+.btnWrap .alert .alert-link{
+    display: inline-block;
+    margin-left: 15px;
+}
+
+
 /***** 顶部栏 *****/
 .topbar {
     height: 50px;
@@ -10904,11 +10919,20 @@ body {
     vertical-align: top;
 }
 
-.addBook .submitBtn, .addBook .cancelBtn {
+.addBook .submitBtn, .addBook .cancelBtn, .addBook .removeBookBtn {
     width: 100px !important;
     margin: 0;
     margin-right: 20px;
     display: inline-block;
+}
+
+.addBook .alert{
+    margin:0;
+    width:80%;
+    margin-bottom:15px;
+}
+.addBook .alert .alert-link{
+    margin-left:15px;
 }
 
 /***** 图书表格页 *****/
@@ -10983,4 +11007,19 @@ body {
     text-decoration: underline;
     cursor: pointer;
     margin-left: 255px;
+}
+
+/***** 评价页 *****/
+#commentForm .scoreInput{
+    width:80px;
+}
+#commentForm textarea{
+    width:400px;
+    height:150px;
+}
+#commentForm .submitBtn, #commentForm .cancelBtn {
+    width: 100px !important;
+    margin: 0;
+    margin-right: 20px;
+    display: inline-block;
 }

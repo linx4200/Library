@@ -63,11 +63,14 @@ module.exports = function (app, checkStudent) {
 
                 var bookIds = [],
                     borrowDate = [],
-                    returnDate = [];
+                    returnDate = [],
+                    commentStatus = [];
 
                 
                 for(var i = 0,l = records.length; i < l; i++ ) {
                     bookIds.push(records[i].book_id);
+
+                    commentStatus.push(records[i].comment);
 
                     borrowDate.push((new Date(Number(records[i].borrowDate))).toJSON().substring(0, 10));
 
@@ -81,7 +84,9 @@ module.exports = function (app, checkStudent) {
                         books: books,
                         page: 'return',
                         borrowDate: borrowDate,
-                        returnDate: returnDate
+                        returnDate: returnDate,
+                        commentStatus: commentStatus,
+                        error : req.flash('error').toString()
                     });
                 });
                 
@@ -90,7 +95,8 @@ module.exports = function (app, checkStudent) {
                 res.render('borrow', {
                     user: req.session.user,
                     books: [],
-                    page: 'return'
+                    page: 'return',
+                    error : req.flash('error').toString()
                 });
             }
             

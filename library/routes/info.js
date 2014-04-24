@@ -10,7 +10,8 @@ module.exports = function (app, checkStudent) {
     app.get('/myInfo', checkStudent);
     app.get('/myInfo', function (req, res) {
         res.render('myInfo', {
-            user: req.session.user
+            user: req.session.user,
+            error : req.flash('error').toString()
         });
     });
 
@@ -58,7 +59,8 @@ module.exports = function (app, checkStudent) {
                     res.redirect('/myInfo');
                 }
                 res.render('myInfo', {
-                    user: user[0]
+                    user: user[0],
+                    error : req.flash('error').toString()
                 });
             });
         });

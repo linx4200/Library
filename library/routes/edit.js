@@ -29,7 +29,8 @@ module.exports = function (app, checkAdmin) {
 
             res.render('edit', {
                 user: req.session.user,
-                book: thebook
+                book: thebook,
+                error : req.flash('error').toString()
             });
         });
     });

@@ -18,7 +18,8 @@ module.exports = function (app, checkLogin) {
             }
             res.render('search', {
                 user: req.session.user,
-                books : books
+                books : books,
+                error : req.flash('error').toString()
             });
         });
     });

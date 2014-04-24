@@ -24,14 +24,16 @@ module.exports = function (app, checkAdmin) {
             if (err) {
                 return res.render('table', {
                     user: req.session.user,
-                    books: []
+                    books: [],
+                    error : req.flash('error').toString()
                 });
             }
             res.render('table', {
                 user: req.session.user,
                 books : books,
                 type : type,
-                subType : subType
+                subType : subType,
+                error : req.flash('error').toString()
             });
         });
     });

@@ -4,6 +4,9 @@
     <% } else if(user.identity === 'admin') { %>
         <% include partials/topbar-admin %>
      <% } %>
+    <% if(error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+    <% } %>
     <div class="bookdetailWrap blockWrap">
         <div class="mb30 cf">
             <div class="coverWrap"><img src="/images/cover/<%= book.cover %>" alt="<%= book.name %>"></div>
@@ -38,8 +41,11 @@
                         <% } %> 
                         
                     <% } else if(user.identity === 'admin') { %>
+                        <div class="alert alert-warning dpn removeWarning">
+                            确定要删除该图书吗?<a href="/remove/<%= book._id %>" class="alert-link">确定</a><a href="" class="alert-link cancelRemoveBtn">取消</a>
+                        </div>
                         <a href="/edit/<%= book._id %>" class="btn editBtn btn-default">编辑</a>
-                        <a href="/remove/<%= book._id %>" class="btn deleBtn btn-default">删除</span></a>
+                        <a class="btn deleBtn btn-default removeBookBtn">删除</span></a>
                     <% } %>
                 </div>
             </div>

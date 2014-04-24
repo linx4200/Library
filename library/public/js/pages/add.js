@@ -51,6 +51,17 @@ define(function (require, exports, module) {
         } else {
             createSubType($subType, typeConfig[typeList[0]]);
         }
+
+        //编辑个人资料页验证
+        $('#addForm').validate({
+            onBlur: true,
+            eachValidField : function() {
+                $(this).closest('.validateInput').removeClass('has-error').addClass('has-success');
+            },
+            eachInvalidField : function() {
+                $(this).closest('.validateInput').removeClass('has-success').addClass('has-error');
+            }
+        });
     };
 
     module.exports = page;

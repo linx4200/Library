@@ -1,5 +1,8 @@
 <% include head %>
     <% include partials/topbar-student %>
+    <% if(error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+    <% } %>
     <div class="bookListWrap blockWrap meWrap">
         <h6 class="mb30 b">收藏夹</h6>
         <div class="selectWrap favoSelectWrap">

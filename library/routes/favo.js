@@ -81,7 +81,8 @@ module.exports = function (app, checkStudent) {
                 Book.query(query, {}, function(err, books) {
                     res.render('favo', {
                         user: req.session.user,
-                        books: books
+                        books: books,
+                        error : req.flash('error').toString()
                     });
                 });
                 
@@ -89,7 +90,8 @@ module.exports = function (app, checkStudent) {
                 //没有找到记录
                 res.render('favo', {
                     user: req.session.user,
-                    books: []
+                    books: [],
+                    error : req.flash('error').toString()
                 });
             }
             

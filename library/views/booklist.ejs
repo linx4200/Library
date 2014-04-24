@@ -1,5 +1,8 @@
 <% include head %>
     <% include partials/topbar-student %>
+    <% if(error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+    <% } %>
     <div class="bookListWrap blockWrap">
         <% include partials/breadcrumb %>
         <div class="filter">

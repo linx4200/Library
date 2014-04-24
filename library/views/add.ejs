@@ -1,48 +1,53 @@
 <% include head %>
     <% include partials/topbar-admin %>
     <div class="blockWrap addBookWrap">
+
+        <% if(error) { %>
+            <div class="alert alert-danger"><%= error %></div>
+        <% } %>
+
         <h4 class="title">添加图书<a href="javascript:history.go(-1)" class="title-back">返回</a></h4>
-        <form action="/add" method="POST" class="addBook" enctype="multipart/form-data">
-            <div class="form-group"> 
+        <form action="/add" method="POST" class="addBook" enctype="multipart/form-data" id="addForm">
+            <div class="form-group validateInput"> 
                 <label for="name">书名</label>
-                <input type="text" name="name" class="form-control">
+                <input type="text" name="name" class="form-control" data-required>
             </div>
-            <div class="form-group"> 
+            <div class="form-group validateInput"> 
                 <label for="author">作者</label>
-                <input type="text" name="author" class="form-control">
+                <input type="text" name="author" class="form-control" data-required>
             </div>
-            <div class="form-group"> 
+            <div class="form-group validateInput"> 
                 <label for="publisher">出版社</label>
-                <input type="text" name="publisher" class="form-control">
+                <input type="text" name="publisher" class="form-control" data-required>
             </div>
-            <div class="form-group"> 
+            <div class="form-group validateInput"> 
                 <label for="time">出版时间</label>
-                <input type="text" name="time" class="form-control">
+                <input type="text" name="time" class="form-control" data-required>
             </div>
-            <div class="form-group"> 
+            <div class="form-group validateInput"> 
                 <label for="isbn">ISBN</label>
-                <input type="text" name="isbn" class="form-control">
+                <input type="text" name="isbn" class="form-control" data-required>
             </div>
-            <div class="form-group"> 
+            <div class="form-group validateInput"> 
                 <label for="type">分类</label>
-                <select name="type" id="type">
+                <select name="type" id="type" data-required>
 
                 </select>
-                <select name="subType" id="subType">
+                <select name="subType" id="subType" data-required>
                     
                 </select>
             </div>
-            <div class="form-group"> 
+            <div class="form-group validateInput"> 
                 <label for="haveNum">藏书数</label>
-                <input type="text" name="haveNum" class="form-control">
+                <input type="text" name="haveNum" class="form-control" data-required>
             </div>
-            <div class="form-group"> 
+            <div class="form-group validateInput"> 
                 <label for="cover">封面</label>
-                <input name="cover" type="file" id="cover">  
+                <input name="cover" type="file" id="cover" data-required>  
             </div>
-            <div class="form-group">
+            <div class="form-group validateInput">
                 <label for="summary">内容简介</label>
-                <textarea name="summary" id="" class="form-control"></textarea>
+                <textarea name="summary" id="" class="form-control" data-required></textarea>
             </div>
             <div class="form-group"> 
                 <label for="list">目录</label>

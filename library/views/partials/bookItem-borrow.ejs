@@ -14,7 +14,12 @@
                     <% if(page === 'borrow') { %>
                         <a href="/returning/<%= books[i]._id %>" class="btn lenBtn btn-primary">马上还书</a>
                     <% } else if(page === 'return') { %>
-                        <a href="/comment/<%= books[i]._id %>" class="btn lenBtn btn-primary">马上评价</a>
+                        <% if(Number(commentStatus[i]) === 0 ){ %>
+                            <a href="/comment/<%= books[i]._id %>" class="btn lenBtn btn-primary">马上评价</a>
+                        <% } else if(Number(commentStatus[i]) === 1){ %>
+                            <a href="/comment/<%= books[i]._id %>" class="btn lenBtn btn-primary" disabled="disable">已评价</a>
+                        <% } %>
+                        
                     <% } %>
                 </div>
             </div>
