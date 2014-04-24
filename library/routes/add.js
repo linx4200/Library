@@ -4,14 +4,16 @@
 var Book = require('../models/book.js'),
     fs = require('fs');
 
-module.exports = function (app) {
+module.exports = function (app, checkAdmin) {
 
+    app.get('/add', checkAdmin);
     app.get('/add', function (req, res) {
         res.render('add', {
             user: req.session.user
         });
     });
 
+    app.post('/add', checkAdmin);
     app.post('/add', function (req, res) {
         var book = new Book(
             req.body.name,

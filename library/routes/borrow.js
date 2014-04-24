@@ -7,8 +7,9 @@ var Book = require('../models/book'),
     config = require('../config'),
     ObjectID = require('mongodb').ObjectID;
 
-module.exports = function (app) {
+module.exports = function (app, checkStudent) {
 
+    app.get('/borrow/:id', checkStudent);
     app.get('/borrow/:id', function (req, res) {
 
         var bookId = new ObjectID(req.params.id),
@@ -53,7 +54,7 @@ module.exports = function (app) {
         
     });
 
-
+    app.get('/borrow', checkStudent);
     app.get('/borrow', function (req, res) {
 
         var user = req.session.user;

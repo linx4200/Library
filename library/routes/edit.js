@@ -5,8 +5,9 @@ var Book = require('../models/book.js'),
     fs = require('fs'),
     ObjectID = require('mongodb').ObjectID;
 
-module.exports = function (app) {
+module.exports = function (app, checkAdmin) {
 
+    app.get('/edit/:id', checkAdmin);
     app.get('/edit/:id', function (req, res) {
         var id = req.params.id,
             query = {
@@ -33,6 +34,7 @@ module.exports = function (app) {
         });
     });
 
+    app.post('/edit', checkAdmin);
     app.post('/edit', function (req, res) {
 
         var change = {

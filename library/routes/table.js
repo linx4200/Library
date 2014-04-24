@@ -3,8 +3,9 @@
  **/
 var Book = require('../models/book.js');
 
-module.exports = function (app) {
+module.exports = function (app, checkAdmin) {
 
+    app.get('/table', checkAdmin);
     app.get('/table', function (req, res) {
 
         var type = req.query.type,

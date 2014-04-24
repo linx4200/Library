@@ -4,8 +4,9 @@
 var Book = require('../models/book.js'),
     ObjectID = require('mongodb').ObjectID;
 
-module.exports = function (app) {
+module.exports = function (app, checkAdmin) {
 
+    app.get('/remove/:id', checkAdmin);
     app.get('/remove/:id', function (req, res) {
         var id = req.params.id,
             query = {

@@ -39,13 +39,35 @@ function checkNotLogin(req, res, next) {
     }
 }
 
-// function checkAdmin(req, res, next) {
-//     if (req.session.user) {
-//         req.flash('error', '已登录!');
-//         res.redirect('back');//返回之前的页面
-//     }
-//     next();
-// }
+function checkStudent(req, res, next) {
+    if (req.session.user) {
+        if(req.session.user.identity === 'student') {
+            next();
+        } else {
+            req.session.user = null;
+            req.flash('error', '不是学生!');
+            res.redirect('/login');//返回之前的页面
+        }
+    } else {
+        req.flash('error', '未登录!');
+        res.redirect('/login');
+    }
+}
+
+function checkAdmin(req, res, next) {
+    if (req.session.user) {
+        if(req.session.user.identity === 'admin') {
+            next();
+        } else {
+            req.session.user = null;
+            req.flash('error', '不是管理员!');
+            res.redirect('/login');//返回之前的页面
+        }
+    } else {
+        req.flash('error', '未登录!');
+        res.redirect('/login');
+    }
+}
 
 
 
@@ -58,23 +80,23 @@ module.exports = function (app) {
     // app.use(checkLogin);
 
     //学生
-    list(app, checkLogin);
-    comment(app);
-    favo(app);
-    info(app);
-    returning(app);
-    borrow(app);
+    list(app, checkStudent);
+    comment(app, checkStudent);
+    favo(app, checkStudent);
+    info(app, checkStudent);
+    returning(app, checkStudent);
+    borrow(app, checkStudent);
 
     //管理员
-    add(app);
-    edit(app);
-    remove(app);
-    table(app);
+    add(app, checkAdmin);
+    edit(app, checkAdmin);
+    remove(app, checkAdmin);
+    table(app, checkAdmin);
 
     //共用
-    detail(app);
+    detail(app, checkLogin);
     search(app, checkLogin);
-    index(app);
+    index(app, checkLogin);
     logout(app, checkLogin);
 
     // app.use(function (req, res) {

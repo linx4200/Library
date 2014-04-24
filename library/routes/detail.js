@@ -7,8 +7,9 @@ var Book = require('../models/book'),
     favo = require('../models/favo'),
     ObjectID = require('mongodb').ObjectID;
 
-module.exports = function (app) {
+module.exports = function (app, checkLogin) {
 
+    app.get('/detail/:id', checkLogin);
     app.get('/detail/:id', function (req, res) {
 
         var id = req.params.id,
@@ -77,8 +78,6 @@ module.exports = function (app) {
                     });
                 });     
             });
-
-            
         });
     });
 };

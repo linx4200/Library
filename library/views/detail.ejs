@@ -1,5 +1,9 @@
 <% include head %>
-    <% include partials/topbar-student %>
+    <% if(user.identity === 'student') { %>
+        <% include partials/topbar-student %>
+    <% } else if(user.identity === 'admin') { %>
+        <% include partials/topbar-admin %>
+     <% } %>
     <div class="bookdetailWrap blockWrap">
         <div class="mb30 cf">
             <div class="coverWrap"><img src="/images/cover/<%= book.cover %>" alt="<%= book.name %>"></div>

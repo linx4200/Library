@@ -1,5 +1,9 @@
 <% include head %>
-    <% include partials/topbar-student %>
+    <% if(user.identity === 'student') { %>
+        <% include partials/topbar-student %>
+    <% } else if(user.identity === 'admin') { %>
+        <% include partials/topbar-admin %>
+     <% } %>
     <div class="blockWrap searchWrap">
         <% include partials/searchForm %>
         <p class="searchResNum">关于 "<span id="skw"></span>" 的搜索结果共有 <%= books.length %> 个</p>

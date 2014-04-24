@@ -2,12 +2,12 @@
  *收藏页
  **/
 var Book = require('../models/book'),
-    User = require('../models/user'),
     favo = require('../models/favo'),
     ObjectID = require('mongodb').ObjectID;
 
-module.exports = function (app) {
+module.exports = function (app, checkStudent) {
 
+    app.get('/favo/:id', checkStudent);
     app.get('/favo/:id', function (req, res) {
 
         var bookId = new ObjectID(req.params.id),
@@ -42,7 +42,7 @@ module.exports = function (app) {
         });
     });
 
-
+    app.get('/favo', checkStudent);
     app.get('/favo', function (req, res) {
 
         var user = req.session.user,
