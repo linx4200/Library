@@ -50,13 +50,13 @@ module.exports = function (app, checkStudent) {
         User.update({no:user.no}, update, function(err) {
             if(err) {
                 req.flash('error', err);
-                res.redirect('/myInfo');
+                return res.redirect('/myInfo');
             }
 
             User.query({no: user.no}, {}, function(err, user) {
                 if(err) {
                     req.flash('error', err);
-                    res.redirect('/myInfo');
+                    return res.redirect('/myInfo');
                 }
                 res.render('myInfo', {
                     user: user[0],

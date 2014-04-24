@@ -17,7 +17,7 @@ module.exports = function (app, checkAdmin) {
         Book.query(query, {}, function(err, books) {
             if(err) {
                 req.flash('error', err);
-                res.redirect('back');
+                return res.redirect('back');
             }
 
             var book = books[0],

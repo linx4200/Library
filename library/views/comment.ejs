@@ -16,7 +16,7 @@
             </div>
         </div>
         
-        <form action="/comment" id="commentForm">
+        <form action="/comment" id="commentForm" method="POST">
             <input type="hidden" name="book_id" value="<%= book._id %>">
             <input type="hidden" name="user_id" value="<%= user._id %>">
             <div class="form-group validateInput"> 

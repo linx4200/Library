@@ -66,7 +66,7 @@ module.exports = function (app, checkStudent) {
         }, {}, function (err, records) {
             if (err) {
                 req.flash('error', err);
-                res.redirect('back');
+                return res.redirect('back');
             }
             if(records.length > 0) {
 

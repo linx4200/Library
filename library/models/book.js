@@ -156,7 +156,7 @@ Book.search = function (keyword, by, callback) {
 };
 
 //更新图书及其相关信息
-Book.update = function(query, operate, callback) {
+Book.update = function(query, update, callback) {
     //打开数据库
     mongodb.open(function (err, db) {
         if (err) {
@@ -169,7 +169,7 @@ Book.update = function(query, operate, callback) {
                 return callback(err);
             }
             //更新图书信息
-            collection.update(query, operate, function (err) {
+            collection.update(query, update, function (err) {
                 mongodb.close();
                 if (err) {
                     return callback(err);

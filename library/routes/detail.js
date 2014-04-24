@@ -40,7 +40,7 @@ module.exports = function (app, checkLogin) {
             }, {}, function (err, record) {
                 if (err) {
                     req.flash('error', err);
-                    res.redirect('back');
+                    return res.redirect('back');
                 }
 
                 for(var i = 0,l = record.length; i < l; i++) {
@@ -58,7 +58,7 @@ module.exports = function (app, checkLogin) {
                 }, {}, function (err, record) {
                     if (err) {
                         req.flash('error', err);
-                        res.redirect('back');
+                        return res.redirect('back');
                     }
 
                     for(var i = 0,l = record.length; i < l; i++) {
