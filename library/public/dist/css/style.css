@@ -10878,6 +10878,9 @@ body {
 .info-p {
     text-indent: 2em;
 }
+.commentItem {
+    margin-bottom: 15px;
+}
 .avatarWrap {
     float: left;
     text-align: center;

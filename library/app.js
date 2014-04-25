@@ -9,7 +9,8 @@ var express = require('express'),
     path = require('path'),
     settings = require('./settings'),
     MongoStore = require('connect-mongo')(express),
-    flash = require('connect-flash');
+    flash = require('connect-flash'),
+    emailReminder = require('./utils/email');
 
 
 var app = express();
@@ -48,3 +49,6 @@ http.createServer(app).listen(app.get('port'), function () {
 
 //路由
 routes(app);
+
+//邮件提醒
+emailReminder();

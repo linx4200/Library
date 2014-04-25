@@ -17,6 +17,8 @@
     "grunt-contrib-concat" : ">=0.3.0",
     "grunt-express-server": "*",
     "grunt-parallel" : "*",
-    "grunt-cmd-transport": "*"
+    "grunt-cmd-transport": "*",
+    "nodemailer": "*",
+    "node-schedule": "*"
   }
 }
