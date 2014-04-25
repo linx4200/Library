@@ -1,4 +1,4 @@
-/*! library - v0.0.1 - 2014-04-24 */
+/*! library - v0.0.1 - 2014-04-25 */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -10870,6 +10870,7 @@ body {
 .toggleTitle .title {
     width: 50%;
     float: left;
+    cursor: pointer;
 }
 .toggleTitle .active {
     background: #bdc3c7;
@@ -10877,7 +10878,34 @@ body {
 .info-p {
     text-indent: 2em;
 }
-
+.avatarWrap {
+    float: left;
+    text-align: center;
+    width:150px;
+}
+.contentWrap {
+    float: left;
+    width:800px;
+    background: #ECF0F1;
+    border-radius: 5px;
+    margin-left: 30px;
+    padding:15px;
+    position: relative;
+}
+.contentWrap::after{
+    position: absolute;
+    content: '';
+    width:0;
+    height:0;
+    display: block;
+    top:10px;
+    left:-10px;
+    width:0;
+    height:0;
+    border-width:5px;
+    border-style:solid;
+    border-color:#fff #ECF0F1 #FFF #fff;    
+}
 /***** 搜索结果页 *****/
 .searchWrap .searchForm {
     width: 500px;

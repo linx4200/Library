@@ -1,0 +1,14 @@
+<% var comments = book.comments.comments %>
+<% for(var i = 0,l = comments.length; i < l; i++) { %>
+    <div class="commentItem cf">
+        <div class="avatarWrap">
+            <img src="/images/avatar.jpg" alt="">
+            <p><%= comments[i].user_nickname %></p>
+        </div>
+        <div class="contentWrap">
+            <p><span class="hr"><%= comments[i].score %></span> 分</p>
+            <p><%= comments[i].content %></p>
+            
+        </div>
+    </div>
+<% } %>

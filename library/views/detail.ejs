@@ -17,8 +17,8 @@
                 <p class="time">出版时间: <%= book.time %></p>
                 <p class="isbn">ISBN: <%= book.isbn %></p>
                 <p class="type">所属分类: <a href="/list?type=<%= book.type %>"><%= book.type %></a> > <a href="/list?type=<%= book.type %>&subType=<%= book.subType %>"><%= book.subType %></a></p>
-                <% if(book.comment) { %>
-                    <p><%= book.comment.num %> 个人已评: <span class="hr"><%= book.comment.score %></span> 分</p>
+                <% if(book.comments) { %>
+                    <p><%= book.comments.num %> 个人已评: <span class="hr"><%= book.comments.score %></span> 分</p>
                 <% } else { %>
                     <p>暂无评分</p>
                 <% } %>
@@ -51,21 +51,36 @@
             </div>
         </div>
         <div class="toggleTitle cf">
-            <div class="title active"><a href="" class="a-b">图书介绍</a></div>
-            <div class="title"><a href="" class="a-b">图书评价</a></div>
+            <div class="title active" data-target="detailInfo" data-hide="commentWrap"><a href="" class="a-b">图书介绍</a></div>
+            <div class="title" data-target="commentWrap" data-hide="detailInfo"><a href="" class="a-b">图书评价</a></div>
         </div>
-        <% if (book.summary) { %>
-            <h5>内容简介</h5>
-            <p class="info-p"><%= book.summary %></p>
-        <% } %>
-        <% if (book.list) { %>
-            <h5>目录</h5>
-            <p class="info-p"><%= book.list %></p>
-        <% } %>
-        <% if (book.intro) { %>
-            <h5>前言</h5>
-            <p class="info-p"><%= book.intro %></p>
-        <% } %>
+
+        <div class="detailInfo">
+            <% if (book.summary) { %>
+                <h5>内容简介</h5>
+                <p class="info-p"><%= book.summary %></p>
+            <% } %>
+            <% if (book.list) { %>
+                <h5>目录</h5>
+                <p class="info-p"><%= book.list %></p>
+            <% } %>
+            <% if (book.intro) { %>
+                <h5>前言</h5>
+                <p class="info-p"><%= book.intro %></p>
+            <% } %>
+        </div>
+
+        <div class="commentWrap dpn">
+            <% if(book.comments) { %>
+                <p>已有 <%= book.comments.num %> 个人评价 : <span class="hr"><%= book.comments.score %></span> 分</p>
+            
+                <% include partials/commentItem %>
+            <% } else { %>
+                <p>暂无评论</p>
+            <% } %>
+            
+        </div>
+        
     </div>
     <% include partials/footer %>
 <% include foot %>

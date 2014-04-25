@@ -62,30 +62,40 @@ module.exports = function (app, checkStudent) {
             if(records.length > 0) {
 
                 var bookIds = [],
-                    borrowDate = [],
-                    returnDate = [],
-                    commentStatus = [];
+                    borrowDate = {},
+                    returnDate = {},
+                    commentStatus = {};
 
                 
                 for(var i = 0,l = records.length; i < l; i++ ) {
                     bookIds.push(records[i].book_id);
 
-                    commentStatus.push(records[i].comment);
+                    commentStatus[records[i].book_id] = (records[i].comment);
 
-                    borrowDate.push((new Date(Number(records[i].borrowDate))).toJSON().substring(0, 10));
+                    borrowDate[records[i].book_id] = ((new Date(Number(records[i].borrowDate))).toJSON().substring(0, 10));
 
-                    returnDate.push((new Date(Number(records[i].returnDate))).toJSON().substring(0, 10));
+                    returnDate[records[i].book_id] = ((new Date(Number(records[i].returnDate))).toJSON().substring(0, 10));
 
                 }
 
                 Book.query({_id: {$in: bookIds}}, {}, function(err, books) {
+                    var borrowDateArr = [],
+                        returnDateArr = [],
+                        commentStatusArr = [];
+
+                    for(var i = 0,l = books.length; i < l; i++) {
+                        borrowDateArr.push(borrowDate[books[i]._id]);
+                        returnDateArr.push(returnDate[books[i]._id]);
+                        commentStatusArr.push(commentStatus[books[i]._id]);
+                    }
+
                     res.render('borrow', {
                         user: req.session.user,
                         books: books,
                         page: 'return',
-                        borrowDate: borrowDate,
-                        returnDate: returnDate,
-                        commentStatus: commentStatus,
+                        borrowDate: borrowDateArr,
+                        returnDate: returnDateArr,
+                        commentStatus: commentStatusArr,
                         error : req.flash('error').toString()
                     });
                 });

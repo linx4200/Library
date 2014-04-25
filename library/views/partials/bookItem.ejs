@@ -11,8 +11,8 @@
             <p class="publisher">出版社: <%= books[i].publisher %></p>
             <p class="time">出版时间: <%= books[i].time %></p>
             <p class="isbn">ISBN: <%= books[i].isbn %></p>
-            <% if(books[i].comment) { %>
-                <p><%= books[i].comment.num %> 个人已评: <span class="hr"><%= books[i].comment.score %></span> 分</p>
+            <% if(books[i].comments) { %>
+                <p><%= books[i].comments.num %> 个人已评: <span class="hr"><%= books[i].comments.score %></span> 分</p>
             <% } else { %>
                 <p>暂无评分</p>
             <% } %>

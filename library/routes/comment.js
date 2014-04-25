@@ -41,8 +41,10 @@ module.exports = function (app, checkStudent) {
 
         var userId = new ObjectID(req.body.user_id),
             bookId = new ObjectID(req.body.book_id),
+            user = req.session.user,
             comment = {
                 user_id: userId,
+                user_nickname: user.nickname || user.no,
                 score: req.body.score,
                 content: req.body.content
             };
@@ -63,7 +65,7 @@ module.exports = function (app, checkStudent) {
                 num = comments.num;
 
                 //计算新评分
-                score = (score * num + score) / (num + 1);
+                score = (Number(score * num) + Number(req.body.score)) / (num + 1);
             } else {
                 score = req.body.score;
             }

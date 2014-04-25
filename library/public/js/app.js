@@ -7,6 +7,7 @@ define(function (require, exports, module) {
         search = require('./pages/search'),
         me = require('./pages/me'),
         removeBook = require('./pages/removeBook'),
+        detail = require('./pages/detail'),
         app = {};
 
     app.init = function () {
@@ -29,6 +30,7 @@ define(function (require, exports, module) {
             search.init();
             me.init();
             removeBook.init();
+            detail.init();
         });
         
     };
