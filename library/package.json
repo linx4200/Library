@@ -19,6 +19,7 @@
     "grunt-parallel" : "*",
     "grunt-cmd-transport": "*",
     "nodemailer": "*",
-    "node-schedule": "*"
+    "node-schedule": "*",
+    "wechat": "*"
   }
 }

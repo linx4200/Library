@@ -87,9 +87,14 @@ define(function (require, exports, module) {
 
         //编辑个人资料页的tooltip
         $('#myInfoForm #email').focus(function() {
-            $('#myInfoForm .tooltip').show();
+            $('#myInfoForm #emailWrap .tooltip').show();
         }).blur(function() {
-            $('#myInfoForm .tooltip').hide();
+            $('#myInfoForm #emailWrap .tooltip').hide();
+        });
+        $('#myInfoForm #weChat').focus(function() {
+            $('#myInfoForm #weChatWrap .tooltip').show();
+        }).blur(function() {
+            $('#myInfoForm #weChatWrap .tooltip').hide();
         });
 
         //编辑个人资料页修改密码

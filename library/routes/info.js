@@ -29,6 +29,9 @@ module.exports = function (app, checkStudent) {
         if(req.body.email) {
            update.$set.email = req.body.email;
         }
+        if(req.body.weChat) {
+           update.$set.weChat = req.body.weChat;
+        }
 
         var password = req.body.password,
             password_re = req.body['password-repeat'];
@@ -58,6 +61,9 @@ module.exports = function (app, checkStudent) {
                     req.flash('error', err);
                     return res.redirect('/myInfo');
                 }
+
+                req.session.user =  user[0];
+
                 res.render('myInfo', {
                     user: user[0],
                     error : req.flash('error').toString()

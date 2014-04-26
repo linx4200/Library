@@ -12,8 +12,8 @@ module.exports = function () {
         now = (new Date()).valueOf(),
         schedule = require('node-schedule');
 
-　　var j = schedule.scheduleJob('0 0 * * *', function(){
-        sendRemindMails();
+　　var j = schedule.scheduleJob('1 1 * * *', function(){
+        // sendRemindMails();
     });
 
 

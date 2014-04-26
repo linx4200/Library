@@ -10,7 +10,8 @@ var express = require('express'),
     settings = require('./settings'),
     MongoStore = require('connect-mongo')(express),
     flash = require('connect-flash'),
-    emailReminder = require('./utils/email');
+    emailReminder = require('./utils/email'),
+    wechat = require('./utils/wechat');
 
 
 var app = express();
@@ -37,6 +38,10 @@ app.use(express.session({
 app.use(flash());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+
+//wechat 微信
+app.use(express.query()); // Or app.use(express.query());
+wechat(app);
 
 // development only
 if ('development' === app.get('env')) {

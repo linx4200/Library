@@ -88,7 +88,8 @@ module.exports = function (grunt) {
                     'models/*.js',
                     '*.js',
                     'views/*.ejs',
-                    'public/dist/*'
+                    'public/dist/*',
+                    'utils/*.js'
                 ],
                 tasks: [
                     'express:web'
