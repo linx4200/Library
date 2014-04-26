@@ -1,4 +1,4 @@
-/*! library - v0.0.1 - 2014-04-25 */
+/*! library - v0.0.1 - 2014-04-26 */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -10771,6 +10771,15 @@ body {
 .indexWrap {
     width: 600px;
     margin: 0 auto;
+}
+.qrcodeTitle {
+    margin-top: 30px;
+}
+.qrcodeWrap {
+    text-align: center;
+}
+.qrcodeWrap img {
+    margin:0;
 }
 
 /***** 图书列表样式 *****/

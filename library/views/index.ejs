@@ -9,6 +9,11 @@
         <div class="indexWrap blockWrap">
             <h4>想借什么书吗?</h4>
             <% include partials/searchForm %>
+            
+            <p class="qrcodeTitle">扫一扫加我们的微信公众平台吧:</p>
+            <div class="qrcodeWrap">
+                <img src="/images/qrcode.jpg" alt="微信二维码">
+            </div>
         </div>
 
     <% } else if(user.identity === 'admin') { %>
