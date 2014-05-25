@@ -19,7 +19,10 @@ var index = require('./index'),
     edit = require('./edit'),
     remove = require('./remove'),
     returning = require('./returning'),
-    borrow = require('./borrow');
+    borrow = require('./borrow'),
+    stats = require('./stats'),
+    people = require('./people'),
+    removeUser = require('./removeUser');
 
 function checkLogin(req, res, next) {
     if (!req.session.user) {
@@ -92,6 +95,9 @@ module.exports = function (app) {
     edit(app, checkAdmin);
     remove(app, checkAdmin);
     table(app, checkAdmin);
+    stats(app, checkAdmin);
+    people(app, checkAdmin);
+    removeUser(app, checkAdmin);
 
     //共用
     detail(app, checkLogin);

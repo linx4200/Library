@@ -13,16 +13,17 @@ define(function (require, exports, module) {
 
     page.init = function () {
         //选择框的样式
-        $('#bOrA').find('[value="' + by + '"]').attr('selected', 'selected');
-        $('#bOrA').selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
+        $('.searchWrap #bOrA').find('[value="' + by + '"]').attr('selected', 'selected');
+        $('.searchWrap #bOrA').selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
 
         //显示关键字
         $('#skw').html(w);
 
         //更改作者或是图书
-        $('#bOrA').change(function () {
+        $('.searchWrap #bOrA').change(function () {
             var val = $(this).val();
-            window.location.href = '/me/' + val;
+            // window.location.href = '/me/' + val;
+            window.location.href = prefix + '&by=' + val;
         });
     };
     

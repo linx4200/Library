@@ -1,0 +1,28 @@
+<%- include head %>
+    <%- include partials/topbar-admin %>
+    <% if(error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+    <% } %>
+    <div class="blockWrap">
+        <h4 class="viewBook-title">统计信息<a href="javascript:history.go(-1)" class="title-back">返回</a></h4>
+        <p>目前借出 <%= borrowNum %> 本图书</p>
+        <p>分类借出情况一览:</p>
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th>分类</th>
+                    <th>借出数</th>
+                </tr>       
+            </thead>
+            <tbody>
+                <% for(var i = 0, l = typeList.length; i < l; i++) { %>
+                    <tr>
+                        <td><%= typeList[i] %></td>
+                        <td><%= stats[typeList[i]] %></td>
+                    </tr> 
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+    <% include partials/footer %>
+<%- include foot %>

@@ -126,3 +126,27 @@ User.query = function (query, sort, callback) {
         });
     });
 };
+
+//根据条件删除用户
+User.remove = function(query, callback) {
+    //打开数据库
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);
+        }
+        //读取 books 集合
+        db.collection('users', function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);
+            }
+            collection.remove(query, function (err) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);
+                }
+                callback(null);
+            });
+        });
+    });
+};

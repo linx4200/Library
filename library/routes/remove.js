@@ -1,7 +1,7 @@
 /**
  *编辑图书页
  **/
-var Book = require('../models/book.js'),
+var Book = require('../models/book'),
     ObjectID = require('mongodb').ObjectID;
 
 module.exports = function (app, checkAdmin) {

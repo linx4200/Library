@@ -8,6 +8,7 @@ define(function (require, exports, module) {
         me = require('./pages/me'),
         removeBook = require('./pages/removeBook'),
         detail = require('./pages/detail'),
+        admin = require('./pages/admin'),
         app = {};
 
     app.init = function () {
@@ -30,6 +31,7 @@ define(function (require, exports, module) {
             search.init();
             me.init();
             removeBook.init();
+            admin.init();
             detail.init();
         });
         

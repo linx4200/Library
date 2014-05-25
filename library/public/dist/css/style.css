@@ -1,4 +1,4 @@
-/*! library - v0.0.1 - 2014-04-26 */
+/*! library - v0.0.1 - 2014-05-25 */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -10654,6 +10654,24 @@ body {
 }
 
 
+table {
+    width: 100%;
+    font-size: 20px;
+}
+table thead {
+    font-weight: bold;
+    color: #fff;
+    background: #7F8C8D;
+    border-radius: 5px;
+}
+table tbody {
+    font-weight: normal;
+}
+table tr {
+    height: 40px;
+    line-height: 40px;
+}
+
 /***** 顶部栏 *****/
 .topbar {
     height: 50px;
@@ -10757,6 +10775,7 @@ body {
     line-height: 50px;
     position: absolute;
     bottom: 0;
+    left: 0;
     width: 100%;
 }
 .footer .copyright {
@@ -10983,19 +11002,6 @@ body {
     font-size: 16px;
     float: right;
 }
-.book-table {
-    width: 100%;
-}
-.book-table thead {
-    font-weight: bold;
-    color: #fff;
-    background: #7F8C8D;
-    border-radius: 5px;
-}
-.book-table tr {
-    height: 40px;
-    line-height: 40px;
-}
 
 /***** 还书页 *****/
 .returnDate span {
@@ -11062,4 +11068,9 @@ body {
     margin: 0;
     margin-right: 20px;
     display: inline-block;
+}
+
+/***** 人员管理 *****/
+.user-table {
+    margin-top:30px;
 }
