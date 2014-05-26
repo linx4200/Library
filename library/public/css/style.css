@@ -215,6 +215,10 @@ table tr {
     margin-top: 15px;
     margin-right: 30px;
 }
+.footer .easterEggs {
+    display: inline-block;
+    margin-left:10px;
+}
 
 /***** 首页样式 *****/
 .indexWrap {
@@ -503,4 +507,19 @@ table tr {
 /***** 人员管理 *****/
 .user-table {
     margin-top:30px;
+}
+
+/***** 彩蛋 *****/
+.egg {
+    background:#ffb7c6;
+    color:black;
+    padding:30px;
+    padding-left: 50px;
+    font-weight:bold;
+}
+.egg .title {
+    color: white;
+}
+.egg p {
+    margin-bottom: 10px;
 }

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书借阅管理系统</title>
+    <link href="/dist/css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/Book.ico">
+    <script src="/dist/js/jquery-1.10.2.min.js"></script>
+    <script src="/dist/js/typed.js" type="text/javascript"></script>
+    <script>
+        $(function(){
+
+            $("#animatedText").typed({
+                strings: [
+                    '四年来你一直在我身边,',
+                    '我是有多幸运才能遇到了你.',
+                    '无论什么事情你都尽量帮我的忙,对我不是一般的好,',
+                    '我不是不知道,只是没有勇气去承认.',
+                    '差一点,我们就是两条相交线,交汇后越走越远,',
+                    '因为你的致谢,我们最终还是没有错过彼此.',
+                    '尽管没有人看好我们,尽管所有人都说我傻,说我冲动,说我绝对会后悔,',
+                    '但我愿意为你赌一把,',
+                    '不敢奢望未来,奢望永远,要知道命运弄人,',
+                    '能做的只有每一天都为我们未来奋斗.',
+                    '爱你的小懒猫 ❤'
+                ],
+                typeSpeed: 80,
+                backSpeed: 30,
+                callback: showWholeText
+            });
+
+            function showWholeText() {
+                setTimeout(function() {
+                    $('#animatedText').hide();
+                    $('#typed-cursor').hide();
+                    $('#egg-text').fadeIn(1500);
+                }, 1500);
+            }
+        });
+    </script>
+</head>
+<body class="egg">
+    <h3 class="title">致谢</h3><div id="heart"></div>
+    <span id="animatedText"></span>
+    <div class="dpn" id="egg-text">
+        <p>四年来你一直在我身边,</p>
+        <p>我是有多幸运才能遇到了你.</p>
+        <p>无论什么事情你都尽量帮我的忙,对我不是一般的好,</p>
+        <p>我不是不知道,只是没有勇气去承认.</p>
+        <p>差一点,我们就是两条相交线,交汇后越走越远,</p>
+        <p>因为你的致谢,我们最终还是没有错过彼此.</p>
+        <p>尽管没有人看好我们,尽管所有人都说我傻,说我冲动,说我绝对会后悔,</p>
+        <p>但我愿意为你赌一把,</p>
+        <p>不敢奢望未来,奢望永远,要知道命运弄人,</p>
+        <p>能做的只有每一天都为我们未来奋斗.</p>
+        <p>爱你的小懒猫 ❤</p>
+    </div>
+</body>
+</html>

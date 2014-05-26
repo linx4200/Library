@@ -1,4 +1,4 @@
-/*! library - v0.0.1 - 2014-05-25 */
+/*! library - v0.0.1 - 2014-05-26 */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -10785,6 +10785,10 @@ table tr {
     margin-top: 15px;
     margin-right: 30px;
 }
+.footer .easterEggs {
+    display: inline-block;
+    margin-left:10px;
+}
 
 /***** 首页样式 *****/
 .indexWrap {
@@ -11073,4 +11077,19 @@ table tr {
 /***** 人员管理 *****/
 .user-table {
     margin-top:30px;
+}
+
+/***** 彩蛋 *****/
+.egg {
+    background:#ffb7c6;
+    color:black;
+    padding:30px;
+    padding-left: 50px;
+    font-weight:bold;
+}
+.egg .title {
+    color: white;
+}
+.egg p {
+    margin-bottom: 10px;
 }

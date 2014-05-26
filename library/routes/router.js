@@ -22,11 +22,12 @@ var index = require('./index'),
     borrow = require('./borrow'),
     stats = require('./stats'),
     people = require('./people'),
-    removeUser = require('./removeUser');
+    removeUser = require('./removeUser'),
+    loveyou = require('./loveyou');
 
 function checkLogin(req, res, next) {
     if (!req.session.user) {
-        req.flash('error', '未登录!');
+        // req.flash('error', '未登录!');
         res.redirect('/login');
     } else {
         next();
@@ -104,6 +105,7 @@ module.exports = function (app) {
     search(app, checkLogin);
     index(app, checkLogin);
     logout(app, checkLogin);
+    loveyou(app, checkLogin);
 
     // app.use(function (req, res) {
     //     res.render('404');
