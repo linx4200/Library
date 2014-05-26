@@ -24,14 +24,14 @@
             </div>
             <div class="form-group" id="emailWrap"> 
                 <label for="email">邮件</label>
-                <div class="tooltip fade top in dpn"><div class="tooltip-arrow"></div><div class="tooltip-inner">绑定邮件可以收到提醒哦!</div></div>
+                <div class="tooltip fade top in dpn"><div class="tooltip-arrow"></div><div class="tooltip-inner">绑定邮箱可以收到图书到期提醒哦~</div></div>
                 <input type="text" name="email" class="form-control" value="<%= user.email || ''%>" id="email">
             </div>
-            <div class="form-group" id="weChatWrap"> 
+            <!-- <div class="form-group" id="weChatWrap"> 
                 <label for="weChat">微信号:</label>
                 <div class="tooltip fade top in dpn"><div class="tooltip-arrow"></div><div class="tooltip-inner">绑定微信号可以在微信公众平台查询借阅状态哦!</div></div>
                 <input type="text" name="weChat" class="form-control" value="<%= user.weChat || '' %>" id="weChat">
-            </div>
+            </div> -->
             <input type="submit" class="submitBtn btn btn-block btn-primary" value="确定修改" disabled="disabled">
             <a href="javascript:history.go(-1);"type="button" class="cancelBtn btn btn-block btn-default">取消</a>
         </form>

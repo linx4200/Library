@@ -5,6 +5,7 @@
 /***** GLOBAL *****/
 body {
     position: relative;
+    font-family: "Microsoft YaHei","ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";
 }
 .a-w {
     color: #fff;  /*白色链接*/
@@ -219,6 +220,16 @@ table tr {
     display: inline-block;
     margin-left:10px;
 }
+.login-footer {
+    background: none;
+    color:black;
+}
+.login-footer .copyright {
+    color:#16a085;
+}
+.login-footer .copyright a {
+    color:#117561;  
+}
 
 /***** 首页样式 *****/
 .indexWrap {
@@ -262,6 +273,7 @@ table tr {
 }
 .bookItem {
     padding:30px;
+    margin-bottom: 15px;
 }
 .bookItem.disabled {
     position: relative;
@@ -338,7 +350,8 @@ table tr {
     background: #bdc3c7;
 }
 .info-p {
-    text-indent: 2em;
+    border: none;
+    font-size: 16px;
 }
 .commentItem {
     margin-bottom: 15px;
@@ -469,6 +482,7 @@ table tr {
 /***** 编辑个人资料页 *****/
 #myInfoForm {
     width: 350px;
+    margin:0 auto;
 }
 #myInfoForm .btn{
     width: 150px;
@@ -478,8 +492,8 @@ table tr {
 }
 #myInfoForm .tooltip {
     position: absolute;
-    top:0;
-    right:0;
+    top:-35px;
+    right:10px;
 }
 #myInfoForm .changePwd, #myInfoForm .cancelPwd {
     font-weight: bold;
@@ -517,8 +531,15 @@ table tr {
     padding-left: 50px;
     font-weight:bold;
 }
+.egg .ta {
+    display: inline-block;
+    margin-left: 15px;
+    font-size: 20px;
+    color: #ffb7c6;
+}
 .egg .title {
     color: white;
+    display: inline-block;
 }
 .egg p {
     margin-bottom: 10px;

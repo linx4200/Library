@@ -58,15 +58,15 @@
         <div class="detailInfo">
             <% if (book.summary) { %>
                 <h5>内容简介</h5>
-                <p class="info-p"><%= book.summary %></p>
+                <pre class="info-p"><%= book.summary %></pre>
             <% } %>
             <% if (book.list) { %>
                 <h5>目录</h5>
-                <p class="info-p"><%= book.list %></p>
+                <pre class="info-p"><%= book.list %></pre>
             <% } %>
             <% if (book.intro) { %>
                 <h5>前言</h5>
-                <p class="info-p"><%= book.intro %></p>
+                <pre class="info-p"><%= book.intro %></pre>
             <% } %>
         </div>
 

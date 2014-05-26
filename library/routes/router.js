@@ -105,7 +105,7 @@ module.exports = function (app) {
     search(app, checkLogin);
     index(app, checkLogin);
     logout(app, checkLogin);
-    loveyou(app, checkLogin);
+    loveyou(app);
 
     // app.use(function (req, res) {
     //     res.render('404');

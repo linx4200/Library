@@ -8,17 +8,17 @@
 
             <form class="login-form" action="/login" method="POST" id="login-form">
                 <div class="form-group">
-                    <label class="radio">
+                    <!-- <label class="radio">
                         <input type="radio" name="identity" id="optionsRadios1" value="student" data-toggle="radio" checked="checked">
                         学生
                       </label>
                       <label class="radio">
                         <input type="radio" name="identity" id="optionsRadios2" value="admin" data-toggle="radio">
                         管理员
-                      </label>
+                      </label> -->
                 </div>
                 <div class="form-group validateInput">
-                    <input type="text" class="form-control login-field" value="" placeholder="请输入学号" id="login-name" name="no" data-required data-pattern="^[0-9]+$"/>
+                    <input type="text" class="form-control login-field" value="" placeholder="请输入学号或工号" id="login-name" name="no" data-required data-pattern="^[0-9]+$"/>
                     <label class="login-field-icon fui-user" for="no"></label>
                 </div>
 
@@ -34,9 +34,9 @@
                 <% } %>
                 
                 <input type="submit" class="btn btn-primary btn-lg btn-block" value="登录">
-                <a class="login-link" href="#">忘记密码 ?</a>
                 <a class="login-link" href="/signup">没有账号 ?</a>
             </div>
         </div>
     </div>
+    <div class="login-footer footer"><p class="copyright">Copyright © 2010063010006 刘欣然 <a class="easterEggs" href="/loveyou">致谢</a></p></div>
 <%- include foot %> 
