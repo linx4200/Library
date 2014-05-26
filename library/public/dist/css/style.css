@@ -10569,7 +10569,7 @@ footer p {
   margin-left: 20px;
 }
 
-.cf:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.cf:after{display:block;visibility:hidden;clear:both;height:0;content:".";}
 .cf{*+height:1%;}
 
 /***** GLOBAL *****/
@@ -10583,11 +10583,11 @@ body {
 .a-b {
     color: #34495e;  /*原色链接*/
 }
-.title-back {  /*标题返回链接*/
-    font-size: 16px;
+.title-back {
     display: inline-block;
     margin-left: 15px;
-    color: #BDC3C7;
+    color: #BDC3C7;  /*标题返回链接*/
+    font-size: 16px;
 }
 .blockWrap { /*块级大容器*/
     padding: 30px;
@@ -10633,16 +10633,16 @@ body {
 }
 .form-error .alert-ico {
     display: inline-block;
+    margin-right: 10px;
     width:20px;
     height: 20px;
     background: url("/images/alert.png") no-repeat;
-    margin-right: 10px;
 }
 .form-error .alert-text {
     display: inline-block;
     height: 20px;
-    line-height: 20px;
     vertical-align: top;
+    line-height: 20px;
 }
 
 .btnWrap .alert{
@@ -10660,10 +10660,10 @@ table {
     font-size: 20px;
 }
 table thead {
-    font-weight: bold;
-    color: #fff;
-    background: #7F8C8D;
     border-radius: 5px;
+    background: #7F8C8D;
+    color: #fff;
+    font-weight: bold;
 }
 table tbody {
     font-weight: normal;
@@ -10681,8 +10681,8 @@ table tr {
 }
 .topbar .logo {
     float: left;
-    width:30px;
     margin-left: 30px;
+    width:30px;
 }
 .topbar .logo img {
     width: 100%;
@@ -10702,18 +10702,18 @@ table tr {
     text-decoration: underline;
 }
 .topbar .returnBtn {
+    display: inline-block;
+    padding: 0;
     width:95px;
     height:30px;
-    line-height: 30px;
-    padding: 0;
-    display: inline-block;
     text-align: center;
+    line-height: 30px;
 }
 .bookMenu {
-    float: left;
     position: relative;
-    width: 160px;
+    float: left;
     margin-left: 15px;
+    width: 160px;
 }
 .bookMenu .dropdown-toggle {
     background: none !important;
@@ -10731,32 +10731,32 @@ table tr {
 .bookSubMenuWrap {
     position: absolute;
     top: -5px;
-    width:760px;
     left:150px;
+    width:760px;
 }
 .bookSubMenu {
-    width: 100%;
-    background: #4b6886;
-    border-radius: 5px;
-    padding-left: 10px;
     margin-left: 10px;
+    padding-left: 10px;
+    width: 100%;
+    border-radius: 5px;
+    background: #4b6886;
 }
 .bookSubMenu li {
-    width:150px;
     float: left;
     margin: 2.5px 0;
+    width:150px;
 }
 .bookSubMenu a {
     display: block;
     clear: both;
-    line-height: 1.4;
-    white-space: nowrap;
     padding: 5px !important;
+    white-space: nowrap;
+    line-height: 1.4;
 }
 .topbar .menu{
-    float: left; 
+    float: left;
+    margin-bottom: 0; 
     margin-left: 50px;
-    margin-bottom: 0;
 }
 .topbar .menu li{
     display: inline-block;
@@ -10771,20 +10771,20 @@ table tr {
 
 /***** FOOTER *****/
 .footer {
-    height: 50px;
-    background: #34495e;
-    line-height: 50px;
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
+    height: 50px;
+    background: #34495e;
+    line-height: 50px;
 }
 .footer .copyright {
-    font-size: 12px;
     float: right;
-    color: #95A5A6;
     margin-top: 15px;
     margin-right: 30px;
+    color: #95A5A6;
+    font-size: 12px;
 }
 .footer .easterEggs {
     display: inline-block;
@@ -10803,8 +10803,8 @@ table tr {
 
 /***** 首页样式 *****/
 .indexWrap {
-    width: 600px;
     margin: 0 auto;
+    width: 600px;
 }
 .qrcodeTitle {
     margin-top: 30px;
@@ -10835,32 +10835,32 @@ table tr {
     font-weight: bold;
 }
 .sortWrap .active{
-    background: #1abc9c;
     border-radius: 5px;
+    background: #1abc9c;
 }
 .sortWrap .active a{
     color: #fff;
 }
 .bookItem {
-    padding:30px;
     margin-bottom: 15px;
+    padding:30px;
 }
 .bookItem.disabled {
     position: relative;
 }
 .bookItem.disabled .infoWrap {
-    z-index: 1;
     position: relative;
+    z-index: 1;
 }
 .bookItem.disabled::before {
-    content: '';
     position: absolute;
     top:0;
     right:0;
-    left:0;
     bottom:0;
-    background-color: rgba(0,0,0,0.1);
+    left:0;
     z-index:0;
+    background-color: rgba(0,0,0,0.1);
+    content: '';
 }
 .coverWrap {
     float: left;
@@ -10871,20 +10871,20 @@ table tr {
 }
 .infoWrap {
     float: left;
-    width: 75%;
     padding-left: 30px;
+    width: 75%;
 }
 .infoWrap .name a {
     color : #34495e;
 }
 .infoWrap p {
-    font-size: 16px;
     margin: 0 0 5px;
+    font-size: 16px;
 }
 .infoWrap .btn {
     display: inline-block;
-    margin-right: 15px;
     margin-top: 10px;
+    margin-right: 15px;
 }
 .infoWrap .lendBtn{
     width: 150px;
@@ -10904,16 +10904,16 @@ table tr {
 
 /***** 图书详细页 *****/
 .toggleTitle {
-    width:100%;
-    background: #ecf0f1;
     margin-bottom: 30px;
+    width:100%;
     height: 50px;
-    line-height: 50px;
+    background: #ecf0f1;
     text-align: center;
+    line-height: 50px;
 }
 .toggleTitle .title {
-    width: 50%;
     float: left;
+    width: 50%;
     cursor: pointer;
 }
 .toggleTitle .active {
@@ -10928,41 +10928,41 @@ table tr {
 }
 .avatarWrap {
     float: left;
-    text-align: center;
     width:150px;
+    text-align: center;
 }
 .contentWrap {
+    position: relative;
     float: left;
-    width:800px;
-    background: #ECF0F1;
-    border-radius: 5px;
     margin-left: 30px;
     padding:15px;
-    position: relative;
+    width:800px;
+    border-radius: 5px;
+    background: #ECF0F1;
 }
 .contentWrap::after{
     position: absolute;
-    content: '';
-    width:0;
-    height:0;
-    display: block;
     top:10px;
     left:-10px;
+    display: block;
     width:0;
+    width:0;
+    height:0;
     height:0;
     border-width:5px;
     border-style:solid;
-    border-color:#fff #ECF0F1 #FFF #fff;    
+    border-color:#fff #ECF0F1 #FFF #fff;
+    content: '';    
 }
 /***** 搜索结果页 *****/
 .searchWrap .searchForm {
     width: 500px;
 }
 .searchWrap .select .btn {
-    width:100px;
-    font-size: 16px;
-    height: 35px;
     padding: 0;
+    width:100px;
+    height: 35px;
+    font-size: 16px;
 }
 .searchWrap .select .btn.btn-hg .filter-option {
     top: 9px !important;
@@ -10973,15 +10973,15 @@ table tr {
 
 /***** 添加图书表单 *****/
 .addBookWrap, .addBookWrap .title {
-    width: 500px;
     margin: 0 auto;
+    width: 500px;
 }
 .addBook {
     margin-top: 15px;
 }
 .addBook label{
-    width: 80px;
     display: inline-block;
+    width: 80px;
 }
 
 .addBook input[type="text"]{
@@ -10991,21 +10991,21 @@ table tr {
 .addBook textarea{
     width: 400px;
     height: 200px;
-    resize:none;
     vertical-align: top;
+    resize:none;
 }
 
 .addBook .submitBtn, .addBook .cancelBtn, .addBook .removeBookBtn {
-    width: 100px !important;
+    display: inline-block;
     margin: 0;
     margin-right: 20px;
-    display: inline-block;
+    width: 100px !important;
 }
 
 .addBook .alert{
     margin:0;
-    width:80%;
     margin-bottom:15px;
+    width:80%;
 }
 .addBook .alert .alert-link{
     margin-left:15px;
@@ -11016,8 +11016,8 @@ table tr {
     margin-top: 0;
 }
 .bookNum {
-    font-size: 16px;
     float: right;
+    font-size: 16px;
 }
 
 /***** 还书页 *****/
@@ -11025,10 +11025,10 @@ table tr {
     padding-left: 20px;
 }
 .meWrap .select .btn {
-    width:150px;
-    font-size: 16px;
-    height: 35px;
     padding: 0;
+    width:150px;
+    height: 35px;
+    font-size: 16px;
 }
 .meWrap .select .btn.btn-hg .filter-option {
     top: 9px !important;
@@ -11051,14 +11051,14 @@ table tr {
 }
 /***** 编辑个人资料页 *****/
 #myInfoForm {
-    width: 350px;
     margin:0 auto;
+    width: 350px;
 }
 #myInfoForm .btn{
-    width: 150px;
     display: inline-block;
     margin:0;
     margin-right: 15px;
+    width: 150px;
 }
 #myInfoForm .tooltip {
     position: absolute;
@@ -11066,11 +11066,11 @@ table tr {
     right:10px;
 }
 #myInfoForm .changePwd, #myInfoForm .cancelPwd {
-    font-weight: bold;
     display: inline-block;
-    text-decoration: underline;
-    cursor: pointer;
     margin-left: 255px;
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 /***** 评价页 *****/
@@ -11082,10 +11082,10 @@ table tr {
     height:150px;
 }
 #commentForm .submitBtn, #commentForm .cancelBtn {
-    width: 100px !important;
+    display: inline-block;
     margin: 0;
     margin-right: 20px;
-    display: inline-block;
+    width: 100px !important;
 }
 
 /***** 人员管理 *****/
@@ -11095,21 +11095,21 @@ table tr {
 
 /***** 彩蛋 *****/
 .egg {
-    background:#ffb7c6;
-    color:black;
     padding:30px;
     padding-left: 50px;
+    background:#ffb7c6;
+    color:black;
     font-weight:bold;
 }
 .egg .ta {
     display: inline-block;
     margin-left: 15px;
-    font-size: 20px;
     color: #ffb7c6;
+    font-size: 20px;
 }
 .egg .title {
-    color: white;
     display: inline-block;
+    color: white;
 }
 .egg p {
     margin-bottom: 10px;

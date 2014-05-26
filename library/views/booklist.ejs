@@ -11,12 +11,12 @@
                 <% if ( type && !subType) { %>
                     <span id="sort-default" class="sort"><a href="/list?type=<%= type %>">默认</a></span>
                     <span id="sort-time" class="sort"><a href="/list?type=<%= type %>&sort=time">出版时间</a></span>
-                    <span id="sort-recommand" class="sort"><a href="/list?type=<%= type %>&sort=recommand">评分</a></span>
+                    <span id="sort-comment" class="sort"><a href="/list?type=<%= type %>&sort=comment">评分</a></span>
                 <% } %>
                 <% if ( subType ) { %>
                     <span id="sort-default" class="sort"><a href="/list?type=<%= type %>&subtype=<%= subType %>">默认</a></span>
                     <span id="sort-time" class="sort"><a href="/list?type=<%= type %>&subtype=<%= subType %>&sort=time">出版时间</a></span>
-                    <span id="sort-recommand" class="sort"><a href="/list?type=<%= type %>&subtype=<%= subType %>&sort=recommand">评分</a></span>
+                    <span id="sort-comment" class="sort"><a href="/list?type=<%= type %>&subtype=<%= subType %>&sort=comment">评分</a></span>
                 <% } %>
                 
                 <label class="checkbox lendableLabel" for="lendable">

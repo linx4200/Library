@@ -116,6 +116,20 @@ module.exports = function (grunt) {
                     args: ['watch:web']
                 }]
             }
+        },
+        uglify: {
+            app: {
+                files: {
+                    'public/dist/js/app.min.js': ['public/dist/js/app.js']
+                }
+            }
+        },
+        cssmin: {
+            css: {
+                files: {
+                    'public/dist/css/style.min.css': ['public/dist/css/style.css']
+                }
+            }
         }
     });
 
@@ -125,6 +139,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-parallel');
     grunt.loadNpmTasks('grunt-cmd-transport');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     grunt.registerTask('web', 'launch webserver and watch tasks', [
         // 'start',
@@ -136,4 +152,6 @@ module.exports = function (grunt) {
     // grunt.registerTask('default', ['watch']);
     grunt.registerTask('default', ['web']);
     grunt.registerTask('seajs', ['clean:seajs', 'transport', 'concat:js', 'clean:seajs']);
+    grunt.registerTask('build', ['seajs', 'uglify', 'cssmin', 'web']);
+
 };

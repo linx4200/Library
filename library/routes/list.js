@@ -11,9 +11,10 @@ module.exports = function (app, checkStudent) {
 
         var type = req.query.type,
             subType = req.query.subtype,
-            sort = req.query.sort,
+            sortTxt = req.query.sort,
             lendable = req.query.lendable,
-            query = {};
+            query = {},
+            sort = {};
 
         if (type) {
             query.type = type;
@@ -24,15 +25,17 @@ module.exports = function (app, checkStudent) {
         if(lendable) {
             query.available = {$gt:0};
         }
-        if (!sort) {
+        if (!sortTxt) {
             sort = {$natural: -1};
         }
-        if (sort === 'time') {
+        if (sortTxt === 'time') {
             sort.time = -1;
         }
-        if (sort === 'comment') {
-            sort.comment = -1;
+        if (sortTxt === 'comment') {
+            sort['comments.score'] = -1;
         }
+
+        console.log(sort);
 
         Book.query(query, sort, function (err, books) {
             if (err) {

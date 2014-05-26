@@ -197,8 +197,8 @@ define("pages/list", [ "../components/utils" ], function(require, exports, modul
             $("#sort-default").addClass("active");
         } else if (sort === "time") {
             $("#sort-time").addClass("active");
-        } else if (sort === "recommand") {
-            $("#sort-recommand").addClass("active");
+        } else if (sort === "comment") {
+            $("#sort-comment").addClass("active");
         }
         if (lendable) {
             $(".lendableLabel").addClass("checked");
