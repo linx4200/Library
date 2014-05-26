@@ -34,9 +34,7 @@ module.exports = function (app, checkStudent) {
         if (sortTxt === 'comment') {
             sort['comments.score'] = -1;
         }
-
-        console.log(sort);
-
+        
         Book.query(query, sort, function (err, books) {
             if (err) {
                 return res.render('booklist', {
