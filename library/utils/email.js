@@ -22,7 +22,7 @@ module.exports = function () {
         service: 'QQ',
         auth: {
             user: 'lib@xinranliu.me',
-            pass: '9x1i1n0r0a8n-???'
+            pass: ''
         }
     });
 
